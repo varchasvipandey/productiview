@@ -1,5 +1,11 @@
+import { Clock } from 'modules';
+
 const App = () => {
-  return <div>Starts from here</div>;
+  return (
+    <div>
+      <Clock />
+    </div>
+  );
 };
 
 export default App;
