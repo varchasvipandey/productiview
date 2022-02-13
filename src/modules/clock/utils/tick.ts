@@ -1,43 +1,25 @@
 import { TimeType } from '../types';
 
 export const tickASecond = (): TimeType => {
-  let meridiem: string;
-  //Save the times in variables
-
   const today = new Date();
 
-  let hours: number | string = today.getHours();
-  let minutes: number | string = today.getMinutes();
-  let seconds: number | string = today.getSeconds();
+  let hours: number | string = today.getHours(),
+    minutes: number | string = today.getMinutes(),
+    seconds: number | string = today.getSeconds(),
+    meridiem: string;
 
-  //Set the AM or PM time
+  // set meridiem based on 24 hour clock
+  if (hours >= 12) meridiem = 'PM';
+  else meridiem = 'AM';
 
-  if (hours >= 12) {
-    meridiem = ' PM';
-  } else {
-    meridiem = ' AM';
-  }
+  // convert to 12 hours format
+  if (hours > 12) hours = hours - 12;
+  else if (hours === 0) hours = 12;
 
-  //convert hours to 12 hour format and put 0 in front
-  if (hours > 12) {
-    hours = hours - 12;
-  } else if (hours === 0) {
-    hours = 12;
-  }
-
-  //Put 0 in front of single digit minutes and seconds
-
-  if (minutes < 10) {
-    minutes = '0' + minutes;
-  } else {
-    minutes = minutes;
-  }
-
-  if (seconds < 10) {
-    seconds = '0' + seconds;
-  } else {
-    seconds = seconds;
-  }
+  // append 0 to single digit
+  if (hours < 10) hours = '0' + hours;
+  if (minutes < 10) minutes = '0' + minutes;
+  if (seconds < 10) seconds = '0' + seconds;
 
   return {
     hours,
