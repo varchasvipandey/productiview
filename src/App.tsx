@@ -1,36 +1,57 @@
-import { Clock, Onboard, QuickSettings } from 'modules';
+import { useMemo } from 'react';
+import { Clock, Onboard, Settings } from 'modules';
 import GlobalStyles from 'styles/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'theme';
-import { useData } from 'data';
+import { useData, defaultBackgroundImages } from 'data';
 import shallow from 'zustand/shallow';
-import { Container, ModulesContainer, ModuleSection } from './app.style';
+import { Container, TopBar, Modules } from './app.style';
+import { getRandomElementFromArray } from 'utils';
 
 const App = () => {
-  const [onboarded] = useData((state) => [state.onboarded], shallow);
+  const [onboarded, appTheme, backgroundImages] = useData(
+    (state) => [state.onboarded, state.theme, state.backgroundImages],
+    shallow
+  );
+
+  const backgroundImage = useMemo(() => {
+    if (!backgroundImages?.length) return getRandomElementFromArray(defaultBackgroundImages);
+    else return getRandomElementFromArray(backgroundImages);
+  }, [backgroundImages]);
+
+  console.log(backgroundImage);
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Container>
+      <Container
+        className={`${appTheme}-theme`}
+        appTheme={appTheme}
+        backgroundImage={backgroundImage}>
         {!onboarded && <Onboard />}
 
         {onboarded && (
-          <ModulesContainer>
-            {/* Notes, to-do list & music */}
-            <ModuleSection className="flex-center-spread-col"></ModuleSection>
+          <>
+            <TopBar.Container>
+              <TopBar.Section />
+              <TopBar.Section>
+                <Settings />
+              </TopBar.Section>
+            </TopBar.Container>
 
-            {/* Clock, reminders & quotes */}
-            <ModuleSection className="flex-center-col">
-              <Clock />
-            </ModuleSection>
+            <Modules.Container>
+              {/* Notes, to-do list & music */}
+              <Modules.Section className="flex-center-spread-col"></Modules.Section>
 
-            {/* Pomodoro and quick settings */}
-            <ModuleSection className="flex-center-spread-col">
-              <QuickSettings />
-              <QuickSettings />
-            </ModuleSection>
-          </ModulesContainer>
+              {/* Clock, reminders & quotes */}
+              <Modules.Section>
+                <Clock />
+              </Modules.Section>
+
+              {/* Pomodoro and settings */}
+              <Modules.Section className="flex-center-spread-col"></Modules.Section>
+            </Modules.Container>
+          </>
         )}
       </Container>
     </ThemeProvider>

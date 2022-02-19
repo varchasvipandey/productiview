@@ -1,3 +1,3 @@
 export * from './clock';
 export * from './onboard';
-export * from './quickSettings';
+export * from './settings';
