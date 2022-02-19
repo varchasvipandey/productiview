@@ -1,6 +1,7 @@
 import { memo, useRef, useEffect, useState } from 'react';
 import { tickASecond } from './utils';
 import { TimeType } from './types';
+import { Container } from './clock.style';
 
 const defaultState: TimeType = {
   hours: '00',
@@ -25,9 +26,17 @@ const Clock = () => {
   }, []);
 
   return (
-    <div>
-      {time.hours} : {time.minutes} : {time.seconds} : {time.meridiem}
-    </div>
+    <Container>
+      <div className="body">
+        <div className="body__time">
+          <p className="body__time__value">
+            {time.hours}
+            <span>:</span>
+            {time.minutes} {time.meridiem}
+          </p>
+        </div>
+      </div>
+    </Container>
   );
 };
 
