@@ -13,7 +13,10 @@ const WallpaperIcon = getIcon('image');
 const Menu = () => {
   const { themeOptions, selectedTheme } = useThemeOptions();
 
-  const [theme, toggleTheme] = useData((state) => [state.theme, state.toggleTheme], shallow);
+  const [updateDataStore, backgroundImages] = useData(
+    (state) => [state.updateDataStore, state.backgroundImages],
+    shallow
+  );
 
   return (
     <Container>
@@ -58,6 +61,8 @@ const Menu = () => {
                 placeholder="Add image URL/s here"
                 type="url"
                 aria-label="image URL field"
+                value={backgroundImages}
+                onChange={(e) => updateDataStore({ backgroundImages: e.target.value })}
               />
             </CollapsibleItem>
           </div>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getIcon } from 'icons';
 import { ToggleOnContainer, MenuContainer } from './settings.style';
 import { Menu } from './components';
+import { AbsoluteBackground } from 'components';
 
 const SettingsIcon = getIcon('settings');
 const CloseIcon = getIcon('close');
@@ -23,11 +24,15 @@ const Settings = () => {
     <>
       {menuOn && (
         <MenuContainer>
+          {/* pseudo absolute bg */}
+          <AbsoluteBackground opacity={0.5} />
+
           <div className="top-bar">
             <button className="top-bar__action" aria-label="close" onClick={handleToggleMenu}>
               <CloseIcon className="top-bar__action__icon" />
             </button>
           </div>
+
           <div className="body">
             <Menu />
           </div>

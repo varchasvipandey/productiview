@@ -1,33 +1,20 @@
-import { useMemo } from 'react';
 import { Clock, Onboard, Settings } from 'modules';
 import GlobalStyles from 'styles/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'theme';
-import { useData, defaultBackgroundImages } from 'data';
+import { useData } from 'data';
 import shallow from 'zustand/shallow';
 import { Container, TopBar, Modules } from './app.style';
-import { getRandomElementFromArray } from 'utils';
+import { AbsoluteBackground } from 'components';
 
 const App = () => {
-  const [onboarded, appTheme, backgroundImages] = useData(
-    (state) => [state.onboarded, state.theme, state.backgroundImages],
-    shallow
-  );
-
-  const backgroundImage = useMemo(() => {
-    if (!backgroundImages?.length) return getRandomElementFromArray(defaultBackgroundImages);
-    else return getRandomElementFromArray(backgroundImages);
-  }, [backgroundImages]);
-
-  console.log(backgroundImage);
+  const [onboarded, appTheme] = useData((state) => [state.onboarded, state.theme], shallow);
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Container
-        className={`${appTheme}-theme`}
-        appTheme={appTheme}
-        backgroundImage={backgroundImage}>
+      <Container className={`${appTheme}-theme`}>
+        <AbsoluteBackground />
         {!onboarded && <Onboard />}
 
         {onboarded && (

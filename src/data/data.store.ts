@@ -7,7 +7,7 @@ export const state: DataStateProps = {
   username: '',
   onboarded: false,
   theme: 'default',
-  backgroundImages: []
+  backgroundImages: ''
 };
 
 type StateType = keyof typeof state;

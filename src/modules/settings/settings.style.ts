@@ -29,7 +29,7 @@ export const ToggleOnContainer = styled.div(
       }
 
       &__icon {
-        color: var(--color-fore);
+        color: var(--color-white) !important;
         font-size: 2rem;
         transition: all 0.3s ease;
       }
@@ -83,7 +83,8 @@ export const MenuContainer = styled.div(
       padding: 2rem;
       max-width: 800px;
       margin: 0 auto;
-      overflow-y: auto;
+      /* overflow-y: auto; */
+      height: 100%;
     }
   `
 );

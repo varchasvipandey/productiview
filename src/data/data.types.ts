@@ -2,7 +2,8 @@ export interface DataStateProps {
   username?: string;
   onboarded?: boolean;
   theme?: 'dark' | 'default';
-  backgroundImages?: string[];
+  backgroundImages?: string;
+  currentBackgroundImage?: string;
 }
 
 export interface DataStoreProps extends DataStateProps {

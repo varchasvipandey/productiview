@@ -1,7 +1,7 @@
-import { FC, useState, ReactNode } from 'react';
-import { IconType } from 'react-icons';
+import { FC, useState, ReactNode, useRef, useEffect } from 'react';
 import { Container } from './collapsibleItem.style';
-import { getIcon, Icons } from 'icons';
+import { getIcon } from 'icons';
+import { sliceId } from 'utils';
 
 interface CollapsibleItemProps {
   defaultSetOpen?: boolean;
@@ -14,10 +14,24 @@ interface CollapsibleItemProps {
 const ArrowDownIcon = getIcon('arrowDown');
 
 const CollapsibleItem: FC<CollapsibleItemProps> = (props) => {
+  const id = useRef<string>(sliceId());
   const { children, title, description, Icon, disabled = false } = props;
   const [open, setOpen] = useState(false);
 
   const handleOpenToggle = () => !disabled && setOpen((prev) => !prev);
+
+  const handleOutSideClick = (e: MouseEvent) => {
+    const elem = document.getElementById(id.current);
+    if (!elem || !e) return;
+    // @ts-ignore - assigned event to node type
+    if (!elem.contains(e.target)) setOpen(false);
+  };
+
+  useEffect(() => {
+    if (open) document.addEventListener('click', handleOutSideClick);
+    else document.removeEventListener('click', handleOutSideClick);
+    return () => document.removeEventListener('click', handleOutSideClick);
+  }, [open]);
 
   return (
     <Container className="glass" open={open} disabled={disabled}>
@@ -34,7 +48,11 @@ const CollapsibleItem: FC<CollapsibleItemProps> = (props) => {
         </div>
       </div>
 
-      {open && <div className="body">{children}</div>}
+      {open && (
+        <div className="body" id={id.current}>
+          {children}
+        </div>
+      )}
     </Container>
   );
 };

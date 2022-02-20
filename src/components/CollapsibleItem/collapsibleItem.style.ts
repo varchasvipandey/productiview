@@ -7,6 +7,7 @@ interface ContainerProps {
 
 export const Container = styled.div(
   ({ open, disabled }: ContainerProps) => css`
+    position: relative;
     ${disabled &&
     css`
       opacity: 0.2;

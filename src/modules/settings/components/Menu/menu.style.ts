@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div(
   () => css`
+    position: relative;
     .title {
       margin-bottom: 3.2rem;
     }

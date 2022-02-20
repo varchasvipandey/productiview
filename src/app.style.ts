@@ -1,27 +1,11 @@
 import styled, { css } from 'styled-components';
 
-interface ContainerProps {
-  backgroundImage: string;
-  appTheme?: 'dark' | 'default';
-}
-
 export const Container = styled.div(
-  ({ appTheme, backgroundImage }: ContainerProps) => css`
+  () => css`
     height: 100vh;
     display: flex;
     flex-direction: column;
-
-    ${appTheme === 'default'
-      ? css`
-          background: ${`url(${backgroundImage})`};
-        `
-      : css`
-          background: ${`linear-gradient(var(--color-back-light), var(--color-back-lighter)), url(${backgroundImage})`};
-        `};
-
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    position: relative;
   `
 );
 
