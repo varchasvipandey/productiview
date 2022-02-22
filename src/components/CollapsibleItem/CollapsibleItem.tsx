@@ -1,7 +1,6 @@
 import { FC, useState, ReactNode, useRef, useEffect } from 'react';
 import { Container } from './collapsibleItem.style';
 import { getIcon } from 'icons';
-import { sliceId } from 'utils';
 
 interface CollapsibleItemProps {
   defaultSetOpen?: boolean;
@@ -14,14 +13,14 @@ interface CollapsibleItemProps {
 const ArrowDownIcon = getIcon('arrowDown');
 
 const CollapsibleItem: FC<CollapsibleItemProps> = (props) => {
-  const id = useRef<string>(sliceId());
+  const expandedDiv = useRef<HTMLDivElement | null>(null);
   const { children, title, description, Icon, disabled = false } = props;
   const [open, setOpen] = useState(false);
 
   const handleOpenToggle = () => !disabled && setOpen((prev) => !prev);
 
   const handleOutSideClick = (e: MouseEvent) => {
-    const elem = document.getElementById(id.current);
+    const elem = expandedDiv.current;
     if (!elem || !e) return;
     // @ts-ignore - assigned event to node type
     if (!elem.contains(e.target)) setOpen(false);
@@ -49,7 +48,7 @@ const CollapsibleItem: FC<CollapsibleItemProps> = (props) => {
       </div>
 
       {open && (
-        <div className="body" id={id.current}>
+        <div className="body" ref={expandedDiv}>
           {children}
         </div>
       )}

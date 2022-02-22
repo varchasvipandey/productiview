@@ -26,7 +26,7 @@ const Onboard = () => {
 
   return (
     <Container className="flex-center-col" canProceed={!!username}>
-      <p className="title big-title mb">Productiview</p>
+      <p className="title">Productiview</p>
 
       <div className="input">
         <input

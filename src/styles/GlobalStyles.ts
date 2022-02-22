@@ -54,6 +54,24 @@ export default createGlobalStyle(
       --color-black-light: #22222299;
       --color-black-lighter: #22222250;
       --color-black-lightest: #22222210;
+
+      --shadow-primary: 0 3px 10px rgba(0, 0, 0, 0.4);
+
+      --border-radius-base: 0.5rem;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: var(--color-white-lightest);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: var(--color-black);
     }
 
     /* Themes */
@@ -71,6 +89,12 @@ export default createGlobalStyle(
       .glass {
         background: rgba(0, 0, 0, 0.05);
         backdrop-filter: blur(50.5px);
+        -webkit-backdrop-filter: blur(16.5px);
+      }
+
+      .glass-inverted {
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(10.5px);
         -webkit-backdrop-filter: blur(16.5px);
       }
     }
@@ -91,6 +115,12 @@ export default createGlobalStyle(
         backdrop-filter: blur(10.5px);
         -webkit-backdrop-filter: blur(16.5px);
       }
+
+      .glass-inverted {
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(10.5px);
+        -webkit-backdrop-filter: blur(16.5px);
+      }
     }
 
     body {
@@ -101,10 +131,6 @@ export default createGlobalStyle(
     }
 
     /* Font sizes */
-    .big-title {
-      font-size: 8rem;
-    }
-
     .title {
       font-size: 4rem;
       font-weight: 600;

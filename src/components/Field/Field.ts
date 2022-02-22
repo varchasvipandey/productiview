@@ -9,6 +9,8 @@ export const TextField = styled.input(
     padding: 0.8rem;
     width: 100%;
     border: 1px solid transparent;
+    border-radius: var(--border-radius-base);
+    transition: all 0.2s ease-in-out;
 
     &:focus {
       outline: none;

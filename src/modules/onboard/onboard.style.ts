@@ -14,7 +14,8 @@ export const Container = styled.div(
     animation: fadeIn 2s ease-in-out;
 
     .title {
-      color: var(--color-fore);
+      color: var(--color-white);
+      font-size: 8rem;
     }
 
     .input {
@@ -25,13 +26,13 @@ export const Container = styled.div(
         font-weight: 400;
         background: transparent;
         border: none;
-        border-bottom: 1px solid var(--color-back);
+        border-bottom: 1px solid var(--color-black);
         padding: 2rem 0;
-        color: var(--color-fore);
+        color: var(--color-white);
         transition: all 0.3s ease-in-out;
 
         &::placeholder {
-          color: var(--color-back);
+          color: var(--color-black);
           font-weight: 400;
           opacity: 0.5;
           transition: all 0.3s ease-in-out;
@@ -39,14 +40,14 @@ export const Container = styled.div(
 
         &:focus {
           outline: none;
-          border-bottom: 1px solid var(--color-fore);
+          border-bottom: 1px solid var(--color-white);
 
           &::placeholder {
-            color: var(--color-fore);
+            color: var(--color-white);
           }
 
           & + button {
-            color: var(--color-fore);
+            color: var(--color-white);
             opacity: 1;
           }
         }
@@ -54,7 +55,7 @@ export const Container = styled.div(
 
       button {
         font-size: 4.8rem;
-        color: var(--color-back);
+        color: var(--color-black);
         opacity: 0.5;
         background: transparent;
         border: none;

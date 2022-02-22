@@ -1,4 +1,4 @@
-import { Clock, Onboard, Settings } from 'modules';
+import { Clock, Onboard, Settings, Bookmarks } from 'modules';
 import GlobalStyles from 'styles/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'theme';
@@ -20,7 +20,9 @@ const App = () => {
         {onboarded && (
           <>
             <TopBar.Container>
-              <TopBar.Section />
+              <TopBar.Section>
+                <Bookmarks />
+              </TopBar.Section>
               <TopBar.Section>
                 <Settings />
               </TopBar.Section>
