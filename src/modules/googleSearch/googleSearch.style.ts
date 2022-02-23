@@ -5,6 +5,10 @@ export const Container = styled.div(
   () => css`
     position: relative;
 
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+    animation-delay: 2s;
+
     .google-icon {
       position: absolute;
       width: 2rem;

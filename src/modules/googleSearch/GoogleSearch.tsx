@@ -1,41 +1,68 @@
-import { useRef } from 'react';
+import { useState, useCallback } from 'react';
 import { TextField, Container } from './googleSearch.style';
 import googleIcon from 'assets/images/google-icon.svg';
 import { isURL } from './utils';
-import { useCache } from 'cache';
-import shallow from 'zustand/shallow';
+// import { useCache } from 'cache';
 import { SearchHistory } from './components';
 
 const GoogleSearch = () => {
-  const inputValue = useRef<HTMLInputElement | null>(null);
-  const [addSearchTerm] = useCache((state) => [state.addSearchTerm], shallow);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showHistory, setShowHistory] = useState(false);
+  // const addSearchTerm = useCache((state) => state.addSearchTerm);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const searchTerm = inputValue.current?.value;
-    if (!searchTerm) return;
+  const handleSearch = useCallback(
+    (focusedTerm?: string) => {
+      if (!searchTerm && !focusedTerm) return;
 
-    // add to cache
-    addSearchTerm(searchTerm);
+      const term = focusedTerm || searchTerm;
 
-    // Check if the search term is a URL
-    let isTermUrl = isURL(searchTerm);
+      // add to cache
+      // addSearchTerm(term);
 
-    if (!isTermUrl) window.location.href = `https://www.google.com/search?q=${searchTerm}`;
-    else window.location.href = searchTerm;
-  };
+      // Check if the search term is a URL
+      let isTermUrl = isURL(term);
+
+      if (!isTermUrl) window.location.href = `https://www.google.com/search?q=${term}`;
+      else {
+        if (term.includes('http')) window.location.href = term;
+        else window.location.href = `https://${term}`;
+      }
+    },
+    [searchTerm]
+  );
+
+  const handleSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      handleSearch();
+    },
+    [handleSearch]
+  );
+
+  const handleToggleShowHistory = () => setShowHistory((prev) => !prev);
 
   return (
     <Container>
       <form onSubmit={handleSubmit}>
+        {/* // TODO: Work on this feature accessiblity */}
+        {false && showHistory && (
+          <SearchHistory
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            handleToggleShowHistory={handleToggleShowHistory}
+            handleSearch={handleSearch}
+          />
+        )}
         <TextField
           placeholder="Search Google or type a URL"
           className="glass-inverted"
-          ref={inputValue}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          value={searchTerm}
+          tabIndex={1}
+          onClick={() => setShowHistory(true)}
           autoFocus
         />
       </form>
-      <SearchHistory />
       <img src={googleIcon} alt="Google.com" className="google-icon" />
     </Container>
   );
