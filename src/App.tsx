@@ -1,4 +1,4 @@
-import { Clock, Onboard, Settings, Bookmarks } from 'modules';
+import { Clock, Onboard, Settings, Bookmarks, GoogleSearch } from 'modules';
 import GlobalStyles from 'styles/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'theme';
@@ -32,9 +32,14 @@ const App = () => {
               {/* Notes, to-do list & music */}
               <Modules.Section className="flex-center-spread-col"></Modules.Section>
 
-              {/* Clock, reminders & quotes */}
+              {/* Clock, Google search, reminders & quotes */}
               <Modules.Section>
-                <Clock />
+                <Modules.Wrapper>
+                  <Clock />
+                </Modules.Wrapper>
+                <Modules.Wrapper>
+                  <GoogleSearch />
+                </Modules.Wrapper>
               </Modules.Section>
 
               {/* Pomodoro and settings */}

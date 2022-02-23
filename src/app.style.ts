@@ -37,9 +37,16 @@ export const ModuleSection = styled.div(
   `
 );
 
+export const ModuleContentWrapper = styled.div(
+  () => css`
+    margin-top: 4rem;
+  `
+);
+
 export const Modules = {
   Container: ModulesContainer,
-  Section: ModuleSection
+  Section: ModuleSection,
+  Wrapper: ModuleContentWrapper
 };
 
 export const TopBar = {

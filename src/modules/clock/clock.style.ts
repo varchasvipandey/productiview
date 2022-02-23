@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div(
   () => css`
-    margin-top: 12rem;
     animation: fadeIn 0.5s ease-in-out;
     .body {
       &__time {
