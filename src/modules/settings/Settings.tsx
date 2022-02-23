@@ -28,7 +28,11 @@ const Settings = () => {
           <AbsoluteBackground opacity={0.5} />
 
           <div className="top-bar">
-            <button className="top-bar__action" aria-label="close" onClick={handleToggleMenu}>
+            <button
+              className="top-bar__action"
+              aria-label="close"
+              onClick={handleToggleMenu}
+              title="Close Settings">
               <CloseIcon className="top-bar__action__icon" />
             </button>
           </div>
@@ -39,7 +43,7 @@ const Settings = () => {
         </MenuContainer>
       )}
 
-      <ToggleOnContainer>
+      <ToggleOnContainer title="Settings">
         <button className="settings" aria-label="settings" onClick={handleToggleMenu}>
           <SettingsIcon className="settings__icon" />
         </button>

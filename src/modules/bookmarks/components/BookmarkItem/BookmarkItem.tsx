@@ -11,7 +11,7 @@ const BookmarkItem = ({ bookmark }: BookmarkItemProps) => {
   if (!url.includes('http')) url = `https://${url}`;
 
   return (
-    <Container>
+    <Container title={url}>
       <a href={url} target="_blank">
         <img
           src={`https://s2.googleusercontent.com/s2/favicons?domain=${url}`}

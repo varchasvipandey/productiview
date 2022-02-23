@@ -22,7 +22,7 @@ const BookmarkListItem = ({ bookmark }: BookmarkListItemProps) => {
 
   return (
     <Container>
-      <div className="bookmark" onClick={handleBookmarkClick}>
+      <div className="bookmark" onClick={handleBookmarkClick} title={url}>
         <div className="bookmark__icon">
           <img
             src={`https://s2.googleusercontent.com/s2/favicons?domain=${url}`}
@@ -32,7 +32,7 @@ const BookmarkListItem = ({ bookmark }: BookmarkListItemProps) => {
         </div>
         <p className="bookmark__url">{shortenTextLength(url, 24, true)}</p>
       </div>
-      <div className="cta-delete">
+      <div className="cta-delete" title="Remove bookmark">
         <button
           aria-label={`remove ${url}`}
           className="flex-center-col"

@@ -38,7 +38,7 @@ const Bookmarks = () => {
               )}
             </div>
           ) : (
-            <p className="tray__empty-text" onClick={handleExpand}>
+            <p className="tray__empty-text" onClick={handleExpand} title="Add Bookmarks">
               Bookmarks
             </p>
           )}
