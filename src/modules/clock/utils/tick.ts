@@ -1,4 +1,4 @@
-import { TimeType } from '../types';
+import { TimeType } from 'types';
 
 export const tickASecond = (): TimeType => {
   const today = new Date();

@@ -1,6 +1,6 @@
-import { memo, useRef, useEffect, useState, useMemo } from 'react';
+import { memo, useRef, useEffect, useState } from 'react';
 import { tickASecond, getDayDateMonthInWords } from './utils';
-import { TimeType } from './types';
+import { TimeType } from 'types';
 import { Container } from './clock.style';
 
 const defaultState: TimeType = {
