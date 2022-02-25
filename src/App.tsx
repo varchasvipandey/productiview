@@ -43,7 +43,7 @@ const App = () => {
               </Modules.Section>
 
               {/* Tasks & Pomodoro */}
-              <Modules.Section className="flex-center-spread-col">
+              <Modules.Section className="flex-spread-col">
                 <Modules.Wrapper></Modules.Wrapper>
                 <Modules.Wrapper>
                   <Pomodoro />

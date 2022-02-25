@@ -188,6 +188,12 @@ export default createGlobalStyle(
       justify-content: space-between;
     }
 
+    .flex-spread-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
     .row {
       display: flex;
       flex-wrap: wrap;

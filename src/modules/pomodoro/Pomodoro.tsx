@@ -2,11 +2,12 @@ import { useRef, useEffect, useState } from 'react';
 import { TimeType } from 'types';
 import { Container } from './pomodoro.style';
 import { countDownASec } from './utils';
-import { PomodoroState } from './types';
+import { PomodoroState, TimerType } from './types';
+import { TimerController, CountdownDisplay } from './components';
 
 const defaultTimeState: TimeType = {
   hours: '00',
-  minutes: '00',
+  minutes: '25',
   seconds: '00'
 };
 
@@ -26,22 +27,34 @@ const Pomodoro = () => {
 
   const triggerWorkTime = () => {
     const timeLimit = Date.now() + workTime;
-    setTimer((prev) => ({ ...prev, timeLimit, isRunning: true }));
+    setTimer((prev) => ({ ...prev, timeLimit, isRunning: true, timerType: 'work' }));
     // Trigger start notification and sound
   };
 
   const triggerBreakTime = () => {
     const timeLimit = Date.now() + breakTime;
-    setTimer((prev) => ({ ...prev, timeLimit, isRunning: true }));
+    setTimer((prev) => ({ ...prev, timeLimit, isRunning: true, timerType: 'break' }));
     // Trigger start notification and sound
   };
 
-  const stopTimer = () => {
-    setTimer((prev) => ({
-      ...prev,
-      isRunning: false,
-      time: { hours: '00', minutes: '00', seconds: '00', gap: 0 }
-    }));
+  const triggerTimer = (timerType: TimerType) => {
+    if (timerType === 'work') triggerWorkTime();
+    if (timerType === 'break') triggerBreakTime();
+  };
+
+  const stopTimer = (stopTimerTo?: TimerType) => {
+    setTimer((prev) => {
+      stopTimerTo = stopTimerTo || prev.timerType;
+      return {
+        ...prev,
+        isRunning: false,
+        time:
+          stopTimerTo === 'work'
+            ? { hours: '00', minutes: '25', seconds: '00', gap: 0 }
+            : { hours: '00', minutes: '05', seconds: '00', gap: 0 },
+        pausedAt: 0
+      };
+    });
   };
 
   const pauseTimer = () => {
@@ -53,7 +66,11 @@ const Pomodoro = () => {
       ...prev,
       isRunning: true,
       pausedAt: 0,
-      timeLimit: Date.now() + prev.timeLimit - prev.pausedAt
+      timeLimit: prev.pausedAt
+        ? Date.now() + prev.timeLimit - prev.pausedAt
+        : prev.timerType === 'work'
+        ? Date.now() + workTime
+        : Date.now() + breakTime
     }));
   };
 
@@ -85,26 +102,23 @@ const Pomodoro = () => {
     };
   }, [timer]);
 
+  /* 
+    TODO: Add a space in display comp above timer which displays timer type
+    TODO: Add minimize button next to timer type
+    TODO: Minimize view to show timer on left and timer type and maximize on the right
+  */
+
   return (
-    <Container>
-      {timer.time.minutes}mins {timer.time.seconds}secs
-      <div>
-        <button onClick={triggerWorkTime} style={{ color: 'var(--color-back)' }}>
-          Trigger Work Time
-        </button>
-        <button onClick={stopTimer} style={{ color: 'var(--color-back)' }}>
-          Stop Timer
-        </button>
-        <button onClick={triggerBreakTime} style={{ color: 'var(--color-back)' }}>
-          Trigger Break Time
-        </button>
-        <button onClick={pauseTimer} style={{ color: 'var(--color-back)' }}>
-          Pause Timer
-        </button>
-        <button onClick={resumeTimer} style={{ color: 'var(--color-back)' }}>
-          Resume Timer
-        </button>
-      </div>
+    <Container className="glass-inverted flex-spread-col">
+      <CountdownDisplay time={timer.time} />
+      <TimerController
+        isRunning={timer.isRunning}
+        isPaused={!!timer.pausedAt}
+        triggerTimer={triggerTimer}
+        pauseTimer={pauseTimer}
+        resumeTimer={resumeTimer}
+        stopTimer={stopTimer}
+      />
     </Container>
   );
 };

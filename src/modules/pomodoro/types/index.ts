@@ -7,5 +7,5 @@ export interface PomodoroState {
   isRunning: boolean;
   time: TimeType;
   pausedAt: number;
-  timerType: string;
+  timerType: TimerType;
 }
