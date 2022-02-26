@@ -17,5 +17,5 @@ export const useAudio = (url: string) => {
     };
   }, []);
 
-  return { playing, toggle };
+  return { playing, toggle, audio };
 };

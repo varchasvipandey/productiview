@@ -194,6 +194,12 @@ export default createGlobalStyle(
       justify-content: space-between;
     }
 
+    .flex-spread-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     .row {
       display: flex;
       flex-wrap: wrap;
