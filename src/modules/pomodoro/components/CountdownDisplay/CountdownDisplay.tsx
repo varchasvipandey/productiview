@@ -11,7 +11,7 @@ interface CountdownDisplayProps {
 }
 
 const CountdownDisplay = ({ time, timerType }: CountdownDisplayProps) => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleToggleExpand = () => setIsExpanded((prev) => !prev);
 

@@ -4,19 +4,32 @@ import { Container } from './pomodoro.style';
 import { countDownASec } from './utils';
 import { PomodoroState, TimerType } from './types';
 import { TimerController, CountdownDisplay } from './components';
+import { showNotification } from 'utils';
+import { useAudio } from 'hooks';
+
+import audioFinishWork from 'assets/audio/notification-1.ogg';
+import audioStartTimer from 'assets/audio/notification-2.ogg';
+import audioFinishBreak from 'assets/audio/notification-3.ogg';
+
+const workMins = '25',
+  breakMins = '05';
 
 const defaultTimeState: TimeType = {
   hours: '00',
-  minutes: '25',
+  minutes: workMins,
   seconds: '00'
 };
 
 const workTime = 1 * 7 * 1000;
-// const workTime = 25 * 60 * 1000;
-// const breakTime = 5 * 60 * 1000;
+// const workTime = +workMins * 60 * 1000;
+// const breakTime = +breakMins * 60 * 1000;
 const breakTime = 1 * 5 * 1000;
 
 const Pomodoro = () => {
+  const { toggle: playAudioStartTimer } = useAudio(audioStartTimer);
+  const { toggle: playAudioFinishWork } = useAudio(audioFinishWork);
+  const { toggle: playAudioFinishBreak } = useAudio(audioFinishBreak);
+
   const tickInterval = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [timer, setTimer] = useState<PomodoroState>({
@@ -43,6 +56,7 @@ const Pomodoro = () => {
   const triggerTimer = (timerType: TimerType) => {
     if (timerType === 'work') triggerWorkTime();
     if (timerType === 'break') triggerBreakTime();
+    playAudioStartTimer();
   };
 
   const stopTimer = (stopTimerTo?: TimerType) => {
@@ -54,8 +68,8 @@ const Pomodoro = () => {
         isRunning: false,
         time:
           stopTimerTo === 'work'
-            ? { hours: '00', minutes: '25', seconds: '00', gap: 0 }
-            : { hours: '00', minutes: '05', seconds: '00', gap: 0 },
+            ? { hours: '00', minutes: workMins, seconds: '00', gap: 0 }
+            : { hours: '00', minutes: breakMins, seconds: '00', gap: 0 },
         pausedAt: 0,
         timerType: stopTimerTo
       };
@@ -88,20 +102,33 @@ const Pomodoro = () => {
     }
     tickInterval.current = setInterval(() => {
       const currTime = countDownASec(timer.timeLimit);
-      console.log('Tick', currTime.gap);
 
       if (!!currTime.gap && currTime.gap < 0) {
         if (tickInterval.current) {
           clearInterval(tickInterval.current);
         }
 
+        const currentTimerType = timer.timerType;
+
+        // Push a notification
+        showNotification(
+          "Time's up!",
+          currentTimerType === 'work'
+            ? 'Time for a quick break!'
+            : "It's time to continue the grind!"
+        );
+
+        // Play notification sound
+        if (currentTimerType === 'work') playAudioFinishWork();
+        if (currentTimerType === 'break') playAudioFinishBreak();
+
         setTimer((prev) => ({
           ...prev,
           timerType: prev.timerType === 'work' ? 'break' : 'work',
           time:
             prev.timerType === 'work'
-              ? { hours: '00', minutes: '05', seconds: '00', gap: 0 }
-              : { hours: '00', minutes: '25', seconds: '00', gap: 0 },
+              ? { hours: '00', minutes: breakMins, seconds: '00', gap: 0 }
+              : { hours: '00', minutes: workMins, seconds: '00', gap: 0 },
           pausedAt: 0,
           timeLimit: prev.timerType === 'work' ? Date.now() + workTime : Date.now() + breakTime,
           finishedCount: prev.finishedCount + 1,
@@ -117,7 +144,7 @@ const Pomodoro = () => {
         clearInterval(tickInterval.current);
       }
     };
-  }, [timer.isRunning, timer.timeLimit]);
+  }, [timer.isRunning, timer.timeLimit, timer.timerType]);
 
   return (
     <Container className="glass-inverted flex-spread-col">
