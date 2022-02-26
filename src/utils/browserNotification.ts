@@ -6,10 +6,16 @@ export const checkNotificationPermission = () => {
   }
 };
 
-export const showNotification = (title: string, body: string) => {
-  // if (document.visibilityState === 'visible') return;
+export const showNotification = (
+  title: string,
+  body: string,
+  bypassActiveScreenCheck?: boolean
+) => {
+  if (!bypassActiveScreenCheck && document.visibilityState === 'visible') return;
 
-  const notification = new Notification(title, { body });
+  const options = { body, silent: true };
+
+  const notification = new Notification(title, options);
 
   notification.onclick = () => {
     window.parent.focus();
@@ -20,18 +26,28 @@ export const showNotification = (title: string, body: string) => {
 // notification permission check if denied already
 export const requestNotificationPermission = async (bypassPreRes?: boolean) => {
   if (isBrowserNotificationSupported()) {
-    if (!bypassPreRes) {
-      if (Notification.permission !== 'denied') {
+    if (checkNotificationPermission() !== 'granted') {
+      if (!bypassPreRes) {
+        if (Notification.permission !== 'denied') {
+          const res = await Notification.requestPermission();
+          if (res === 'granted')
+            showNotification(
+              'Great Job!',
+              'Notifications help you to keep a track of your time',
+              true
+            );
+          return res;
+        }
+      } else {
         const res = await Notification.requestPermission();
         if (res === 'granted')
-          showNotification('Great Job!', 'Notifications helps you to keep a track of your time');
+          showNotification(
+            'Great Job!',
+            'Notifications help you to keep a track of your time',
+            true
+          );
         return res;
       }
-    } else {
-      const res = await Notification.requestPermission();
-      if (res === 'granted')
-        showNotification('Great Job!', 'Notifications helps you to keep a track of your time');
-      return res;
     }
   }
 };

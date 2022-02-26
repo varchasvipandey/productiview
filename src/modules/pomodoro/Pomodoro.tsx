@@ -4,7 +4,7 @@ import { Container } from './pomodoro.style';
 import { countDownASec } from './utils';
 import { PomodoroState, TimerType } from './types';
 import { TimerController, CountdownDisplay } from './components';
-import { showNotification } from 'utils';
+import { showNotification, requestNotificationPermission } from 'utils';
 import { useAudio } from 'hooks';
 
 import audioFinishWork from 'assets/audio/notification-1.ogg';
@@ -56,6 +56,7 @@ const Pomodoro = () => {
   const triggerTimer = (timerType: TimerType) => {
     if (timerType === 'work') triggerWorkTime();
     if (timerType === 'break') triggerBreakTime();
+    requestNotificationPermission();
     playAudioStartTimer();
   };
 
