@@ -8,4 +8,5 @@ export interface PomodoroState {
   time: TimeType;
   pausedAt: number;
   timerType: TimerType;
+  finishedCount: number;
 }

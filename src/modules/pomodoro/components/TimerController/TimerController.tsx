@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Container } from './timerController.style';
 import { ToolButton } from 'components';
 import { TimerType } from '../../types';
@@ -6,6 +6,7 @@ import { TimerType } from '../../types';
 interface TimerControllerProps {
   isRunning: boolean;
   isPaused: boolean;
+  finishedCount: number;
   triggerTimer: (timerType: TimerType) => void;
   pauseTimer: () => void;
   resumeTimer: () => void;
@@ -15,6 +16,7 @@ interface TimerControllerProps {
 const TimerController = ({
   isRunning,
   isPaused,
+  finishedCount,
   triggerTimer,
   pauseTimer,
   resumeTimer,
@@ -30,12 +32,15 @@ const TimerController = ({
   }, [isRunning, timerType]);
 
   const handleSwitchTimer = useCallback(() => {
-    setTimerType((prev) => {
-      if (prev === 'work') stopTimer('break');
-      else if (prev === 'break') stopTimer('work');
-      return prev === 'work' ? 'break' : 'work';
-    });
-  }, []);
+    if (timerType === 'work') stopTimer('break');
+    else if (timerType === 'break') stopTimer('work');
+    setTimerType((prev) => (prev === 'work' ? 'break' : 'work'));
+  }, [timerType]);
+
+  // update controller timer type after every completion of a countdown
+  useEffect(() => {
+    if (finishedCount) setTimerType((prev) => (prev === 'work' ? 'break' : 'work'));
+  }, [finishedCount]);
 
   return (
     <Container>
@@ -49,6 +54,13 @@ const TimerController = ({
       </div>
 
       <div className="actions-set">
+        <div className="action" title={timerType === 'work' ? 'Switch to break' : 'Switch to work'}>
+          <ToolButton
+            iconName={timerType === 'work' ? 'workOff' : 'workOn'}
+            onClick={handleSwitchTimer}
+          />
+        </div>
+
         <div className="action" title={timerType === 'work' ? 'Switch to break' : 'Switch to work'}>
           <ToolButton
             iconName={timerType === 'work' ? 'workOff' : 'workOn'}

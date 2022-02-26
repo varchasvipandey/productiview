@@ -11,8 +11,10 @@ const defaultTimeState: TimeType = {
   seconds: '00'
 };
 
-const workTime = 25 * 60 * 1000;
-const breakTime = 5 * 60 * 1000;
+const workTime = 1 * 7 * 1000;
+// const workTime = 25 * 60 * 1000;
+// const breakTime = 5 * 60 * 1000;
+const breakTime = 1 * 5 * 1000;
 
 const Pomodoro = () => {
   const tickInterval = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -22,7 +24,8 @@ const Pomodoro = () => {
     isRunning: false,
     time: defaultTimeState,
     pausedAt: 0,
-    timerType: 'work'
+    timerType: 'work',
+    finishedCount: 0
   });
 
   const triggerWorkTime = () => {
@@ -45,6 +48,7 @@ const Pomodoro = () => {
   const stopTimer = (stopTimerTo?: TimerType) => {
     setTimer((prev) => {
       stopTimerTo = stopTimerTo || prev.timerType;
+
       return {
         ...prev,
         isRunning: false,
@@ -52,7 +56,8 @@ const Pomodoro = () => {
           stopTimerTo === 'work'
             ? { hours: '00', minutes: '25', seconds: '00', gap: 0 }
             : { hours: '00', minutes: '05', seconds: '00', gap: 0 },
-        pausedAt: 0
+        pausedAt: 0,
+        timerType: stopTimerTo
       };
     });
   };
@@ -89,10 +94,22 @@ const Pomodoro = () => {
         if (tickInterval.current) {
           clearInterval(tickInterval.current);
         }
-        setTimer((prev) => ({ ...prev, isRunning: false }));
+
+        setTimer((prev) => ({
+          ...prev,
+          timerType: prev.timerType === 'work' ? 'break' : 'work',
+          time:
+            prev.timerType === 'work'
+              ? { hours: '00', minutes: '05', seconds: '00', gap: 0 }
+              : { hours: '00', minutes: '25', seconds: '00', gap: 0 },
+          pausedAt: 0,
+          timeLimit: prev.timerType === 'work' ? Date.now() + workTime : Date.now() + breakTime,
+          finishedCount: prev.finishedCount + 1,
+          isRunning: false
+        }));
+
         // Trigger notification and sound
-      }
-      setTimer((prev) => ({ ...prev, time: currTime }));
+      } else setTimer((prev) => ({ ...prev, time: currTime }));
     }, 1000);
 
     return () => {
@@ -100,20 +117,15 @@ const Pomodoro = () => {
         clearInterval(tickInterval.current);
       }
     };
-  }, [timer]);
-
-  /* 
-    TODO: Add a space in display comp above timer which displays timer type
-    TODO: Add minimize button next to timer type
-    TODO: Minimize view to show timer on left and timer type and maximize on the right
-  */
+  }, [timer.isRunning, timer.timeLimit]);
 
   return (
     <Container className="glass-inverted flex-spread-col">
-      <CountdownDisplay time={timer.time} />
+      <CountdownDisplay time={timer.time} timerType={timer.timerType} />
       <TimerController
         isRunning={timer.isRunning}
         isPaused={!!timer.pausedAt}
+        finishedCount={timer.finishedCount}
         triggerTimer={triggerTimer}
         pauseTimer={pauseTimer}
         resumeTimer={resumeTimer}
