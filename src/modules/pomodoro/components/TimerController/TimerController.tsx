@@ -60,13 +60,6 @@ const TimerController = ({
             onClick={handleSwitchTimer}
           />
         </div>
-
-        <div className="action" title={timerType === 'work' ? 'Switch to break' : 'Switch to work'}>
-          <ToolButton
-            iconName={timerType === 'work' ? 'workOff' : 'workOn'}
-            onClick={handleSwitchTimer}
-          />
-        </div>
       </div>
     </Container>
   );
