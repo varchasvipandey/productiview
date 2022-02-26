@@ -42,7 +42,7 @@ const GoogleSearch = () => {
   const handleToggleShowHistory = () => setShowHistory((prev) => !prev);
 
   return (
-    <Container>
+    <Container className="appear-slow">
       <form onSubmit={handleSubmit}>
         {/* // TODO: Work on this feature accessiblity */}
         {false && showHistory && (

@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Container } from './musicPlayer.style';
 import { onlineMusicList } from './utils';
+import { AudioController, AudioInfo } from './components';
 
 const MusicPlayer = () => {
   const [music, setMusic] = useState({
@@ -59,24 +60,24 @@ const MusicPlayer = () => {
     };
   }, [music.isPlaying, music.selectedIndex]);
 
-  /*
-    TODO: Row 1 - Music Icon disc rotation animation if state playing, Player Controls
-    TODO: Row 2 - Music Title | Artist
-  */
-
   return (
-    <Container className="glass-inverted flex-spread-col">
-      <audio src={music.list[music.selectedIndex].url} ref={audioElem}></audio>
-      <button onClick={handlePlayPause} style={{ color: 'red' }}>
-        Play Music
-      </button>
-      <button onClick={handleNext} style={{ color: 'red' }}>
-        Next Song
-      </button>
-      <button onClick={handlePrev} style={{ color: 'red' }}>
-        Prev Song
-      </button>
-    </Container>
+    <>
+      <audio
+        src={music.list[music.selectedIndex].url}
+        ref={audioElem}
+        style={{ display: 'none' }}
+      />
+
+      <Container className="glass-inverted flex-spread-col appear-slow">
+        <AudioController
+          handlePlayPause={handlePlayPause}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+          isPlaying={music.isPlaying}
+        />
+        <AudioInfo {...music.list[music.selectedIndex]} />
+      </Container>
+    </>
   );
 };
 

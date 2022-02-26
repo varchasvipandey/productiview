@@ -239,5 +239,11 @@ export default createGlobalStyle(
         transform: translateY(-100%);
       }
     }
+
+    .appear-slow {
+      opacity: 0;
+      animation: fadeIn 0.5s ease-in-out forwards;
+      animation-delay: 2s;
+    }
   `
 );

@@ -148,7 +148,7 @@ const Pomodoro = () => {
   }, [timer.isRunning, timer.timeLimit, timer.timerType]);
 
   return (
-    <Container className="glass-inverted flex-spread-col">
+    <Container className="glass-inverted flex-spread-col appear-slow">
       <CountdownDisplay time={timer.time} timerType={timer.timerType} />
       <TimerController
         isRunning={timer.isRunning}

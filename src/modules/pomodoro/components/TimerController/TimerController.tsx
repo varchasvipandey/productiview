@@ -46,10 +46,14 @@ const TimerController = ({
     <Container>
       <div className="actions-set">
         <div className="action" title={isRunning ? 'Pause timer' : 'Start timer'}>
-          <ToolButton iconName={isRunning ? 'pause' : 'play'} onClick={handlePlayPause} />
+          <ToolButton
+            iconName={isRunning ? 'pause' : 'play'}
+            onClick={handlePlayPause}
+            ariaLabel={isRunning ? 'Pause timer' : 'Start timer'}
+          />
         </div>
         <div className="action" title="Stop timer and reset">
-          <ToolButton iconName="stop" onClick={stopTimer} />
+          <ToolButton iconName="stop" onClick={stopTimer} ariaLabel="Stop timer and reset" />
         </div>
       </div>
 
@@ -58,6 +62,7 @@ const TimerController = ({
           <ToolButton
             iconName={timerType === 'work' ? 'workOff' : 'workOn'}
             onClick={handleSwitchTimer}
+            ariaLabel={timerType === 'work' ? 'Switch to break' : 'Switch to work'}
           />
         </div>
       </div>

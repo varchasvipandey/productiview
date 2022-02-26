@@ -10,6 +10,7 @@ import {
   MdOutlineHourglassDisabled
 } from 'react-icons/md';
 import { FaPlay, FaPause, FaStop, FaForward, FaBackward } from 'react-icons/fa';
+import { GiCompactDisc } from 'react-icons/gi';
 
 const icons = {
   rightCircularArror: IoIosArrowDropright,
@@ -28,7 +29,8 @@ const icons = {
   workOff: MdWorkOff,
   workOn: MdWork,
   timeDisabled: MdOutlineHourglassDisabled,
-  timeEnabled: MdOutlineHourglassEmpty
+  timeEnabled: MdOutlineHourglassEmpty,
+  disc: GiCompactDisc
 };
 
 export type Icons = keyof typeof icons;
