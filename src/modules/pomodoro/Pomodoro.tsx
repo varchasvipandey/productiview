@@ -20,10 +20,8 @@ const defaultTimeState: TimeType = {
   seconds: "00",
 };
 
-const workTime = 1 * 7 * 1000;
-// const workTime = +workMins * 60 * 1000;
-// const breakTime = +breakMins * 60 * 1000;
-const breakTime = 1 * 5 * 1000;
+const workTime = +workMins * 60 * 1000;
+const breakTime = +breakMins * 60 * 1000;
 
 const Pomodoro = () => {
   const { toggle: playAudioStartTimer } = useAudio(audioStartTimer);
