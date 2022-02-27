@@ -7,7 +7,8 @@ import {
   MdWorkOff,
   MdWork,
   MdOutlineHourglassEmpty,
-  MdOutlineHourglassDisabled
+  MdOutlineHourglassDisabled,
+  MdOutlineInfo
 } from 'react-icons/md';
 import { FaPlay, FaPause, FaStop, FaForward, FaBackward } from 'react-icons/fa';
 import { GiCompactDisc } from 'react-icons/gi';
@@ -30,7 +31,8 @@ const icons = {
   workOn: MdWork,
   timeDisabled: MdOutlineHourglassDisabled,
   timeEnabled: MdOutlineHourglassEmpty,
-  disc: GiCompactDisc
+  disc: GiCompactDisc,
+  info: MdOutlineInfo
 };
 
 export type Icons = keyof typeof icons;

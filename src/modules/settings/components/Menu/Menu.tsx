@@ -5,10 +5,12 @@ import { useData } from 'data';
 import shallow from 'zustand/shallow';
 import { ColorOption } from './bones';
 import { useThemeOptions } from '../../hooks';
+import { About } from '../';
 
 const ThemeIcon = getIcon('theme');
 const ColorIcon = getIcon('colorAccent');
 const WallpaperIcon = getIcon('image');
+const AboutIcon = getIcon('info');
 
 const Menu = () => {
   const { themeOptions, selectedTheme } = useThemeOptions();
@@ -64,6 +66,22 @@ const Menu = () => {
                 value={backgroundImages}
                 onChange={(e) => updateDataStore({ backgroundImages: e.target.value })}
               />
+            </CollapsibleItem>
+          </div>
+        </div>
+      </div>
+
+      {/* Widget visibility option */}
+
+      {/* About */}
+      <div className="section">
+        <div className="row">
+          <div className="row__item">
+            <CollapsibleItem
+              title="About"
+              description="Application version, source code and developer's info"
+              Icon={<AboutIcon />}>
+              <About />
             </CollapsibleItem>
           </div>
         </div>
