@@ -26,3 +26,4 @@ dist-ssr
 features-list.txt
 RAW
 todo-list.txt
+.env

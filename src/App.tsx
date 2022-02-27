@@ -15,9 +15,20 @@ import { useData } from 'data';
 import shallow from 'zustand/shallow';
 import { Container, TopBar, Modules } from './app.style';
 import { AbsoluteBackground } from 'components';
+import { useEffect } from 'react';
+
+import { logEvent } from 'config/firebase';
 
 const App = () => {
   const [onboarded, appTheme] = useData((state) => [state.onboarded, state.theme], shallow);
+
+  useEffect(() => {
+    logEvent('app_opened', {
+      deviceWidth: window.screen.availWidth,
+      screenRestrictionApplied: window.screen.availWidth < 1280,
+      deviceAndApp: window.navigator.userAgent
+    });
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
