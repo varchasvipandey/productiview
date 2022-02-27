@@ -1,10 +1,10 @@
-import { useState, useRef, useEffect } from 'react';
-import { BookmarkItem, BookmarkListItem, NewBookmarkField } from './components';
-import { Container } from './bookmark.style';
-import { useData } from 'data';
-import { getIcon } from 'icons';
+import { useState, useRef, useEffect } from "react";
+import { BookmarkItem, BookmarkListItem, NewBookmarkField } from "./components";
+import { Container } from "./bookmark.style";
+import { useData } from "data";
+import { getIcon } from "icons";
 
-const ArrowIcon = getIcon('downCircularArror');
+const ArrowIcon = getIcon("downCircularArror");
 
 const Bookmarks = () => {
   const expandedMenu = useRef<HTMLDivElement | null>(null);
@@ -21,9 +21,9 @@ const Bookmarks = () => {
   };
 
   useEffect(() => {
-    if (expanded) document.addEventListener('click', handleOutSideClick);
-    else document.removeEventListener('click', handleOutSideClick);
-    return () => document.removeEventListener('click', handleOutSideClick);
+    if (expanded) document.addEventListener("click", handleOutSideClick);
+    else document.removeEventListener("click", handleOutSideClick);
+    return () => document.removeEventListener("click", handleOutSideClick);
   }, [expanded]);
 
   return (
@@ -33,16 +33,25 @@ const Bookmarks = () => {
           {!!bookmarks?.length ? (
             <div className="tray__bookmark-list">
               {bookmarks.map((bookmark, index) =>
-                index <= 2 ? <BookmarkItem key={bookmark.id} bookmark={bookmark} /> : null
+                index <= 2 ? (
+                  <BookmarkItem key={bookmark.id} bookmark={bookmark} />
+                ) : null
               )}
             </div>
           ) : (
-            <p className="tray__empty-text" onClick={handleExpand} title="Add Bookmarks">
+            <p
+              className="tray__empty-text"
+              onClick={handleExpand}
+              title="Add Bookmarks"
+            >
               Bookmarks
             </p>
           )}
 
-          <div className="tray__cta-more" onMouseEnter={() => setExpanded(true)}>
+          <div
+            className="tray__cta-more"
+            onMouseEnter={() => setExpanded(true)}
+          >
             <button aria-label="bookmark options" onClick={handleExpand}>
               <ArrowIcon />
             </button>

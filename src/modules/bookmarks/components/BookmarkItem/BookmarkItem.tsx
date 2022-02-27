@@ -1,6 +1,6 @@
-import { Container } from './bookmarkItem.style';
-import { Bookmark } from 'data';
-import { memo } from 'react';
+import { Container } from "./bookmarkItem.style";
+import { Bookmark } from "data";
+import { memo } from "react";
 
 interface BookmarkItemProps {
   bookmark: Bookmark;
@@ -8,7 +8,7 @@ interface BookmarkItemProps {
 
 const BookmarkItem = ({ bookmark }: BookmarkItemProps) => {
   let url = bookmark.url;
-  if (!url.includes('http')) url = `https://${url}`;
+  if (!url.includes("http")) url = `https://${url}`;
 
   return (
     <Container title={url}>

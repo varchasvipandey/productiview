@@ -1,2 +1,2 @@
-export { default as MusicPlayer } from './MusicPlayer';
-export * from './types';
+export { default as MusicPlayer } from "./MusicPlayer";
+export * from "./types";

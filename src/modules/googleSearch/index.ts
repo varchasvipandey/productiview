@@ -1,1 +1,1 @@
-export { default as GoogleSearch } from './GoogleSearch';
+export { default as GoogleSearch } from "./GoogleSearch";

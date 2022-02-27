@@ -1,1 +1,1 @@
-export { default as Onboard } from './Onboard';
+export { default as Onboard } from "./Onboard";

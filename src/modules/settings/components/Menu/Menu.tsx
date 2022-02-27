@@ -1,16 +1,17 @@
-import { Container } from './menu.style';
-import { CollapsibleItem, TextField } from 'components';
-import { getIcon } from 'icons';
-import { useData } from 'data';
-import shallow from 'zustand/shallow';
-import { ColorOption } from './bones';
-import { useThemeOptions } from '../../hooks';
-import { About } from '../';
+import { Container } from "./menu.style";
+import { CollapsibleItem, TextField } from "components";
+import { getIcon } from "icons";
+import { useData } from "data";
+import shallow from "zustand/shallow";
+import { ColorOption } from "./bones";
+import { useThemeOptions } from "../../hooks";
+import { About, WidgetOptions } from "../";
 
-const ThemeIcon = getIcon('theme');
-const ColorIcon = getIcon('colorAccent');
-const WallpaperIcon = getIcon('image');
-const AboutIcon = getIcon('info');
+const ThemeIcon = getIcon("theme");
+const ColorIcon = getIcon("colorAccent");
+const WallpaperIcon = getIcon("image");
+const AboutIcon = getIcon("info");
+const WidgetsIcon = getIcon("widgets");
 
 const Menu = () => {
   const { themeOptions, selectedTheme } = useThemeOptions();
@@ -67,7 +68,9 @@ const Menu = () => {
                 type="url"
                 aria-label="image URL field"
                 value={backgroundImages}
-                onChange={(e) => updateDataStore({ backgroundImages: e.target.value })}
+                onChange={(e) =>
+                  updateDataStore({ backgroundImages: e.target.value })
+                }
               />
             </CollapsibleItem>
           </div>
@@ -75,6 +78,19 @@ const Menu = () => {
       </div>
 
       {/* Widget visibility option */}
+      <div className="section">
+        <div className="row">
+          <div className="row__item">
+            <CollapsibleItem
+              title="Widget Options"
+              description="Show or hide widgets according to your needs"
+              Icon={<WidgetsIcon />}
+            >
+              <WidgetOptions />
+            </CollapsibleItem>
+          </div>
+        </div>
+      </div>
 
       {/* About */}
       <div className="section">

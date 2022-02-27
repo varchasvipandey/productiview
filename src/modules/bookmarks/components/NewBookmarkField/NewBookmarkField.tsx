@@ -1,7 +1,7 @@
-import { useRef } from 'react';
-import { TextField } from 'components';
-import { useData } from 'data';
-import shallow from 'zustand/shallow';
+import { useRef } from "react";
+import { TextField } from "components";
+import { useData } from "data";
+import shallow from "zustand/shallow";
 
 const NewBookmarkField = () => {
   const inputValue = useRef<HTMLInputElement | null>(null);
@@ -12,7 +12,7 @@ const NewBookmarkField = () => {
     const newBookmark = inputValue.current?.value;
     if (newBookmark && inputValue?.current) {
       addBookmark(newBookmark);
-      inputValue.current.value = '';
+      inputValue.current.value = "";
     }
   };
 

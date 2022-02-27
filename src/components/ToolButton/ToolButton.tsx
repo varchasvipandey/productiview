@@ -1,6 +1,6 @@
-import React, { memo, useMemo } from 'react';
-import { getIcon, Icons } from 'icons';
-import { Container } from './toolButton.style';
+import React, { memo, useMemo } from "react";
+import { getIcon, Icons } from "icons";
+import { Container } from "./toolButton.style";
 
 export interface ToolButtonProps {
   iconName: Icons;
@@ -11,7 +11,10 @@ export interface ToolButtonProps {
 const ToolButton = ({ iconName, onClick, ariaLabel }: ToolButtonProps) => {
   const Icon = useMemo(() => getIcon(iconName), [iconName]);
   return (
-    <Container onClick={() => onClick && onClick()} aria-label={ariaLabel || `action ${iconName}`}>
+    <Container
+      onClick={() => onClick && onClick()}
+      aria-label={ariaLabel || `action ${iconName}`}
+    >
       <Icon />
     </Container>
   );

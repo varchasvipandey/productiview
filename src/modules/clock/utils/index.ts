@@ -1,2 +1,2 @@
-export * from './tick';
-export * from './date';
+export * from "./tick";
+export * from "./date";

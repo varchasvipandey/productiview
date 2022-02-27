@@ -1,23 +1,23 @@
-import { useRef, useEffect, useState } from 'react';
-import { TimeType } from 'types';
-import { Container } from './pomodoro.style';
-import { countDownASec } from './utils';
-import { PomodoroState, TimerType } from './types';
-import { TimerController, CountdownDisplay } from './components';
-import { showNotification, requestNotificationPermission } from 'utils';
-import { useAudio } from 'hooks';
+import { useRef, useEffect, useState } from "react";
+import { TimeType } from "types";
+import { Container } from "./pomodoro.style";
+import { countDownASec } from "./utils";
+import { PomodoroState, TimerType } from "./types";
+import { TimerController, CountdownDisplay } from "./components";
+import { showNotification, requestNotificationPermission } from "utils";
+import { useAudio } from "hooks";
 
-import audioFinishWork from 'assets/audio/notification-1.ogg';
-import audioStartTimer from 'assets/audio/notification-2.ogg';
-import audioFinishBreak from 'assets/audio/notification-3.ogg';
+import audioFinishWork from "assets/audio/notification-1.ogg";
+import audioStartTimer from "assets/audio/notification-2.ogg";
+import audioFinishBreak from "assets/audio/notification-3.ogg";
 
-const workMins = '25';
-const breakMins = '05';
+const workMins = "25";
+const breakMins = "05";
 
 const defaultTimeState: TimeType = {
-  hours: '00',
+  hours: "00",
   minutes: workMins,
-  seconds: '00'
+  seconds: "00",
 };
 
 const workTime = 1 * 7 * 1000;
@@ -37,25 +37,35 @@ const Pomodoro = () => {
     isRunning: false,
     time: defaultTimeState,
     pausedAt: 0,
-    timerType: 'work',
-    finishedCount: 0
+    timerType: "work",
+    finishedCount: 0,
   });
 
   const triggerWorkTime = () => {
     const timeLimit = Date.now() + workTime;
-    setTimer((prev) => ({ ...prev, timeLimit, isRunning: true, timerType: 'work' }));
+    setTimer((prev) => ({
+      ...prev,
+      timeLimit,
+      isRunning: true,
+      timerType: "work",
+    }));
     // Trigger start notification and sound
   };
 
   const triggerBreakTime = () => {
     const timeLimit = Date.now() + breakTime;
-    setTimer((prev) => ({ ...prev, timeLimit, isRunning: true, timerType: 'break' }));
+    setTimer((prev) => ({
+      ...prev,
+      timeLimit,
+      isRunning: true,
+      timerType: "break",
+    }));
     // Trigger start notification and sound
   };
 
   const triggerTimer = (timerType: TimerType) => {
-    if (timerType === 'work') triggerWorkTime();
-    if (timerType === 'break') triggerBreakTime();
+    if (timerType === "work") triggerWorkTime();
+    if (timerType === "break") triggerBreakTime();
     requestNotificationPermission();
     playAudioStartTimer();
   };
@@ -68,11 +78,11 @@ const Pomodoro = () => {
         ...prev,
         isRunning: false,
         time:
-          stopTimerTo === 'work'
-            ? { hours: '00', minutes: workMins, seconds: '00', gap: 0 }
-            : { hours: '00', minutes: breakMins, seconds: '00', gap: 0 },
+          stopTimerTo === "work"
+            ? { hours: "00", minutes: workMins, seconds: "00", gap: 0 }
+            : { hours: "00", minutes: breakMins, seconds: "00", gap: 0 },
         pausedAt: 0,
-        timerType: stopTimerTo
+        timerType: stopTimerTo,
       };
     });
   };
@@ -88,9 +98,9 @@ const Pomodoro = () => {
       pausedAt: 0,
       timeLimit: prev.pausedAt
         ? Date.now() + prev.timeLimit - prev.pausedAt
-        : prev.timerType === 'work'
+        : prev.timerType === "work"
         ? Date.now() + workTime
-        : Date.now() + breakTime
+        : Date.now() + breakTime,
     }));
   };
 
@@ -114,26 +124,29 @@ const Pomodoro = () => {
         // Push a notification
         showNotification(
           "Time's up!",
-          currentTimerType === 'work'
-            ? 'Time for a quick break!'
+          currentTimerType === "work"
+            ? "Time for a quick break!"
             : "It's time to continue the grind!"
         );
 
         // Play notification sound
-        if (currentTimerType === 'work') playAudioFinishWork();
-        if (currentTimerType === 'break') playAudioFinishBreak();
+        if (currentTimerType === "work") playAudioFinishWork();
+        if (currentTimerType === "break") playAudioFinishBreak();
 
         setTimer((prev) => ({
           ...prev,
-          timerType: prev.timerType === 'work' ? 'break' : 'work',
+          timerType: prev.timerType === "work" ? "break" : "work",
           time:
-            prev.timerType === 'work'
-              ? { hours: '00', minutes: breakMins, seconds: '00', gap: 0 }
-              : { hours: '00', minutes: workMins, seconds: '00', gap: 0 },
+            prev.timerType === "work"
+              ? { hours: "00", minutes: breakMins, seconds: "00", gap: 0 }
+              : { hours: "00", minutes: workMins, seconds: "00", gap: 0 },
           pausedAt: 0,
-          timeLimit: prev.timerType === 'work' ? Date.now() + workTime : Date.now() + breakTime,
+          timeLimit:
+            prev.timerType === "work"
+              ? Date.now() + workTime
+              : Date.now() + breakTime,
           finishedCount: prev.finishedCount + 1,
-          isRunning: false
+          isRunning: false,
         }));
 
         // Trigger notification and sound

@@ -1,6 +1,6 @@
-import { FC, useState, ReactNode, useRef, useEffect } from 'react';
-import { Container } from './collapsibleItem.style';
-import { getIcon } from 'icons';
+import { FC, useState, ReactNode, useRef, useEffect } from "react";
+import { Container } from "./collapsibleItem.style";
+import { getIcon } from "icons";
 
 interface CollapsibleItemProps {
   defaultSetOpen?: boolean;
@@ -10,7 +10,7 @@ interface CollapsibleItemProps {
   disabled?: boolean;
 }
 
-const ArrowDownIcon = getIcon('arrowDown');
+const ArrowDownIcon = getIcon("arrowDown");
 
 const CollapsibleItem: FC<CollapsibleItemProps> = (props) => {
   const expandedDiv = useRef<HTMLDivElement | null>(null);
@@ -27,9 +27,9 @@ const CollapsibleItem: FC<CollapsibleItemProps> = (props) => {
   };
 
   useEffect(() => {
-    if (open) document.addEventListener('click', handleOutSideClick);
-    else document.removeEventListener('click', handleOutSideClick);
-    return () => document.removeEventListener('click', handleOutSideClick);
+    if (open) document.addEventListener("click", handleOutSideClick);
+    else document.removeEventListener("click", handleOutSideClick);
+    return () => document.removeEventListener("click", handleOutSideClick);
   }, [open]);
 
   return (
@@ -38,8 +38,12 @@ const CollapsibleItem: FC<CollapsibleItemProps> = (props) => {
         <div className="header__info">
           {Icon && <div className="header__info__icon">{Icon}</div>}
           <div className="header__info__text">
-            <p className="header__info__text__heading sectionHeading">{title}</p>
-            {!!description && <p className="header__info__text__description">{description}</p>}
+            <p className="header__info__text__heading sectionHeading">
+              {title}
+            </p>
+            {!!description && (
+              <p className="header__info__text__description">{description}</p>
+            )}
           </div>
         </div>
         <div className="header__action">

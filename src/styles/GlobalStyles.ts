@@ -1,5 +1,5 @@
-import { createGlobalStyle, css } from 'styled-components';
-import { Theme } from 'theme';
+import { createGlobalStyle, css } from "styled-components";
+import { Theme } from "theme";
 
 export interface GlobalStylesProps {
   theme: Theme;
@@ -7,7 +7,7 @@ export interface GlobalStylesProps {
 
 export default createGlobalStyle(
   ({ theme }: GlobalStylesProps) => css`
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
     *,
     *::before,
@@ -131,7 +131,7 @@ export default createGlobalStyle(
 
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
+      font-family: "Inter", sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }

@@ -1,10 +1,10 @@
-import { memo, useState } from 'react';
-import { TimeType } from 'types';
-import { Container } from './countdownDisplay.style';
-import { TimerType } from '../../types';
-import { getIcon } from 'icons';
+import { memo, useState } from "react";
+import { TimeType } from "types";
+import { Container } from "./countdownDisplay.style";
+import { TimerType } from "../../types";
+import { getIcon } from "icons";
 
-const ArrowIcon = getIcon('arrowDown');
+const ArrowIcon = getIcon("arrowDown");
 interface CountdownDisplayProps {
   time: TimeType;
   timerType: TimerType;
@@ -25,10 +25,16 @@ const CountdownDisplay = ({ time, timerType }: CountdownDisplayProps) => {
         </div>
         <div className="top-bar__cta">
           <p className="top-bar__cta__timer-type">
-            {timerType === 'work' ? 'Work Time' : 'Break Time'}
+            {timerType === "work" ? "Work Time" : "Break Time"}
           </p>
-          <div className="top-bar__cta__action" title={isExpanded ? 'Minimize' : 'Maximize'}>
-            <button aria-label={isExpanded ? 'Minimize' : 'Maximize'} onClick={handleToggleExpand}>
+          <div
+            className="top-bar__cta__action"
+            title={isExpanded ? "Minimize" : "Maximize"}
+          >
+            <button
+              aria-label={isExpanded ? "Minimize" : "Maximize"}
+              onClick={handleToggleExpand}
+            >
               <ArrowIcon />
             </button>
           </div>

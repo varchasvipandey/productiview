@@ -1,17 +1,24 @@
-import { IoIosArrowDropright, IoIosArrowDropdown } from 'react-icons/io';
-import { RiSettingsLine } from 'react-icons/ri';
-import { IoColorPaletteOutline, IoCloseOutline, IoImage } from 'react-icons/io5';
-import { HiColorSwatch } from 'react-icons/hi';
+import { IoIosArrowDropright, IoIosArrowDropdown } from "react-icons/io";
+import { RiSettingsLine } from "react-icons/ri";
+import {
+  IoColorPaletteOutline,
+  IoCloseOutline,
+  IoImage,
+} from "react-icons/io5";
+import { HiColorSwatch } from "react-icons/hi";
 import {
   MdKeyboardArrowDown,
   MdWorkOff,
   MdWork,
   MdOutlineHourglassEmpty,
   MdOutlineHourglassDisabled,
-  MdOutlineInfo
-} from 'react-icons/md';
-import { FaPlay, FaPause, FaStop, FaForward, FaBackward } from 'react-icons/fa';
-import { GiCompactDisc } from 'react-icons/gi';
+  MdOutlineInfo,
+  MdOutlineWidgets,
+  MdCheckBoxOutlineBlank,
+  MdCheckBox,
+} from "react-icons/md";
+import { FaPlay, FaPause, FaStop, FaForward, FaBackward } from "react-icons/fa";
+import { GiCompactDisc } from "react-icons/gi";
 
 const icons = {
   rightCircularArror: IoIosArrowDropright,
@@ -32,7 +39,10 @@ const icons = {
   timeDisabled: MdOutlineHourglassDisabled,
   timeEnabled: MdOutlineHourglassEmpty,
   disc: GiCompactDisc,
-  info: MdOutlineInfo
+  info: MdOutlineInfo,
+  widgets: MdOutlineWidgets,
+  unchecked: MdCheckBoxOutlineBlank,
+  checked: MdCheckBox,
 };
 
 export type Icons = keyof typeof icons;

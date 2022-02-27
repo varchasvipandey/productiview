@@ -1,13 +1,13 @@
-import { memo, useRef, useEffect, useState } from 'react';
-import { tickASecond, getDayDateMonthInWords } from './utils';
-import { TimeType } from 'types';
-import { Container } from './clock.style';
+import { memo, useRef, useEffect, useState } from "react";
+import { tickASecond, getDayDateMonthInWords } from "./utils";
+import { TimeType } from "types";
+import { Container } from "./clock.style";
 
 const defaultState: TimeType = {
-  hours: '00',
-  minutes: '00',
-  seconds: '00',
-  meridiem: 'AM'
+  hours: "00",
+  minutes: "00",
+  seconds: "00",
+  meridiem: "AM",
 };
 
 const Clock = () => {
@@ -27,7 +27,8 @@ const Clock = () => {
     };
   }, []);
 
-  if (time.hours === '00' && time.minutes === '00' && time.seconds === '00') return null;
+  if (time.hours === "00" && time.minutes === "00" && time.seconds === "00")
+    return null;
 
   return (
     <Container>

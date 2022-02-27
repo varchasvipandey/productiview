@@ -1,6 +1,6 @@
-import { memo, useEffect } from 'react';
-import { Logo } from 'components';
-import { Container } from './welcome.style';
+import { memo, useEffect } from "react";
+import { Logo } from "components";
+import { Container } from "./welcome.style";
 
 interface WelcomeProps {
   handleClick: () => void;
@@ -8,10 +8,10 @@ interface WelcomeProps {
 
 const Welcome = ({ handleClick }: WelcomeProps) => {
   useEffect(() => {
-    document.addEventListener('click', handleClick);
+    document.addEventListener("click", handleClick);
 
     return () => {
-      document.removeEventListener('click', handleClick);
+      document.removeEventListener("click", handleClick);
     };
   }, []);
 
@@ -20,9 +20,9 @@ const Welcome = ({ handleClick }: WelcomeProps) => {
       <Logo
         sx={{
           opacity: 0,
-          transform: 'scale(0.95)',
-          animation: 'cinematicFadeIn 4s ease-in-out forwards',
-          animationDelay: '2s'
+          transform: "scale(0.95)",
+          animation: "cinematicFadeIn 4s ease-in-out forwards",
+          animationDelay: "2s",
         }}
       />
 

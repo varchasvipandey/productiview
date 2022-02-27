@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
-import { Container } from './onboard.style';
-import { Welcome, ImagesDisplay } from './components';
-import { useData } from 'data';
+import { useState, useRef, useEffect } from "react";
+import { Container } from "./onboard.style";
+import { Welcome, ImagesDisplay } from "./components";
+import { useData } from "data";
 
 const Onboard = () => {
   const onboardingDiv = useRef<HTMLDivElement | null>(null);
@@ -17,7 +17,7 @@ const Onboard = () => {
       const onboardingDivEl = onboardingDiv.current;
       if (!onboardingDivEl) return;
 
-      onboardingDivEl.style.animation = 'fadeOut 0.5s ease-in-out forwards';
+      onboardingDivEl.style.animation = "fadeOut 0.5s ease-in-out forwards";
 
       setTimeout(() => {
         updateDataStore({ onboarded: true });
@@ -26,10 +26,17 @@ const Onboard = () => {
   }, [onboardingStep]);
 
   return (
-    <Container className="flex-center-col glass-primary-color" ref={onboardingDiv}>
-      {onboardingStep === 0 && <Welcome handleClick={handleNextOnboardingStep} />}
+    <Container
+      className="flex-center-col glass-primary-color"
+      ref={onboardingDiv}
+    >
+      {onboardingStep === 0 && (
+        <Welcome handleClick={handleNextOnboardingStep} />
+      )}
 
-      {onboardingStep === 1 && <ImagesDisplay handleProceed={handleNextOnboardingStep} />}
+      {onboardingStep === 1 && (
+        <ImagesDisplay handleProceed={handleNextOnboardingStep} />
+      )}
     </Container>
   );
 };

@@ -1,3 +1,3 @@
-export * from './data.types';
-export * from './data.store';
-export * from './constants';
+export * from "./data.types";
+export * from "./data.store";
+export * from "./constants";

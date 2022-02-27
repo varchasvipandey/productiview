@@ -1,5 +1,5 @@
-import { SearchEntry } from './cache.type';
-import { sliceId } from 'utils';
+import { SearchEntry } from "./cache.type";
+import { sliceId } from "utils";
 
 export const addNewSearchTerm = (
   searchTerm: string,
@@ -9,7 +9,7 @@ export const addNewSearchTerm = (
     const newEntry = {
       id: sliceId(),
       searchTerm,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     };
     if (currentSearches) return [newEntry, ...currentSearches];
     else return [newEntry];

@@ -1,16 +1,16 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 interface ContainerProps {
   backgroundImage: string;
   opacity?: number;
-  theme?: 'dark' | 'default';
+  theme?: "dark" | "default";
 }
 
 export const Container = styled.div(
   ({ backgroundImage, opacity, theme }: ContainerProps) => css`
     position: absolute;
     z-index: -1;
-    ${theme === 'default'
+    ${theme === "default"
       ? css`
           background: ${`url(${backgroundImage})`};
         `

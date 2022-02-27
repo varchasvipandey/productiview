@@ -1,1 +1,1 @@
-export * from './onboardingImage';
+export * from "./onboardingImage";

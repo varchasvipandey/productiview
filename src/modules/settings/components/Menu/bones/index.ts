@@ -1,1 +1,1 @@
-export { default as ColorOption } from './ColorOption/ColorOption';
+export { default as ColorOption } from "./ColorOption/ColorOption";

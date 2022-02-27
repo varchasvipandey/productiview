@@ -6,27 +6,30 @@ import {
   GoogleSearch,
   Pomodoro,
   MusicPlayer,
-  ScreenSizeRestriction
-} from 'modules';
-import GlobalStyles from 'styles/GlobalStyles';
-import { ThemeProvider } from 'styled-components';
-import { theme } from 'theme';
-import { useData } from 'data';
-import shallow from 'zustand/shallow';
-import { Container, TopBar, Modules } from './app.style';
-import { AbsoluteBackground } from 'components';
-import { useEffect } from 'react';
+  ScreenSizeRestriction,
+} from "modules";
+import GlobalStyles from "styles/GlobalStyles";
+import { ThemeProvider } from "styled-components";
+import { theme } from "theme";
+import { useData } from "data";
+import shallow from "zustand/shallow";
+import { Container, TopBar, Modules } from "./app.style";
+import { AbsoluteBackground } from "components";
+import { useEffect } from "react";
 
-import { logEvent } from 'config/firebase';
+import { logEvent } from "config/firebase";
 
 const App = () => {
-  const [onboarded, appTheme] = useData((state) => [state.onboarded, state.theme], shallow);
+  const [onboarded, appTheme, widgetsVisibility] = useData(
+    (state) => [state.onboarded, state.theme, state.widgetsVisibility],
+    shallow
+  );
 
   useEffect(() => {
-    logEvent('app_opened', {
+    logEvent("app_opened", {
       deviceWidth: window.screen.availWidth,
       screenRestrictionApplied: window.screen.availWidth < 1280,
-      deviceAndApp: window.navigator.userAgent
+      deviceAndApp: window.navigator.userAgent,
     });
   }, []);
 
@@ -45,7 +48,7 @@ const App = () => {
             <>
               <TopBar.Container>
                 <TopBar.Section>
-                  <Bookmarks />
+                  {!!widgetsVisibility?.bookmarks && <Bookmarks />}
                 </TopBar.Section>
                 <TopBar.Section>
                   <Settings />
@@ -57,17 +60,17 @@ const App = () => {
                 <Modules.Section className="flex-spread-col">
                   <Modules.Wrapper></Modules.Wrapper>
                   <Modules.Wrapper>
-                    <MusicPlayer />
+                    {!!widgetsVisibility?.audioPlayer && <MusicPlayer />}
                   </Modules.Wrapper>
                 </Modules.Section>
 
                 {/* Clock, Google search & quotes */}
                 <Modules.Section>
                   <Modules.Wrapper>
-                    <Clock />
+                    {!!widgetsVisibility?.clock && <Clock />}
                   </Modules.Wrapper>
                   <Modules.Wrapper>
-                    <GoogleSearch />
+                    {!!widgetsVisibility?.googleSearch && <GoogleSearch />}
                   </Modules.Wrapper>
                 </Modules.Section>
 
@@ -75,7 +78,7 @@ const App = () => {
                 <Modules.Section className="flex-spread-col">
                   <Modules.Wrapper></Modules.Wrapper>
                   <Modules.Wrapper>
-                    <Pomodoro />
+                    {!!widgetsVisibility?.pomodoro && <Pomodoro />}
                   </Modules.Wrapper>
                 </Modules.Section>
               </Modules.Container>

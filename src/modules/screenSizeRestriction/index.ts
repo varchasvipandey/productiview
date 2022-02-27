@@ -1,1 +1,1 @@
-export { default as ScreenSizeRestriction } from './ScreenSizeRestriction';
+export { default as ScreenSizeRestriction } from "./ScreenSizeRestriction";

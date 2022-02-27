@@ -1,20 +1,20 @@
-import { Container } from './bookmarkListItem.style';
-import { getIcon } from 'icons';
-import { useData, Bookmark } from 'data';
-import { shortenTextLength } from 'utils';
-import { memo } from 'react';
+import { Container } from "./bookmarkListItem.style";
+import { getIcon } from "icons";
+import { useData, Bookmark } from "data";
+import { shortenTextLength } from "utils";
+import { memo } from "react";
 
 interface BookmarkListItemProps {
   bookmark: Bookmark;
 }
 
-const DeleteIcon = getIcon('close');
+const DeleteIcon = getIcon("close");
 
 const BookmarkListItem = ({ bookmark }: BookmarkListItemProps) => {
   const removeBookmark = useData((state) => state.removeBookmark);
 
   let url = bookmark.url;
-  if (!url.includes('http')) url = `https://${url}`;
+  if (!url.includes("http")) url = `https://${url}`;
 
   const handleRemoveBookmark = () => removeBookmark(bookmark.id);
 

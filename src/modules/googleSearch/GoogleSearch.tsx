@@ -1,12 +1,12 @@
-import { useState, useCallback } from 'react';
-import { TextField, Container } from './googleSearch.style';
-import googleIcon from 'assets/images/google-icon.svg';
-import { isURL } from './utils';
+import { useState, useCallback } from "react";
+import { TextField, Container } from "./googleSearch.style";
+import googleIcon from "assets/images/google-icon.svg";
+import { isURL } from "./utils";
 // import { useCache } from 'cache';
-import { SearchHistory } from './components';
+import { SearchHistory } from "./components";
 
 const GoogleSearch = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [showHistory, setShowHistory] = useState(false);
   // const addSearchTerm = useCache((state) => state.addSearchTerm);
 
@@ -22,9 +22,10 @@ const GoogleSearch = () => {
       // Check if the search term is a URL
       const isTermUrl = isURL(term);
 
-      if (!isTermUrl) window.location.href = `https://www.google.com/search?q=${term}`;
+      if (!isTermUrl)
+        window.location.href = `https://www.google.com/search?q=${term}`;
       else {
-        if (term.includes('http')) window.location.href = term;
+        if (term.includes("http")) window.location.href = term;
         else window.location.href = `https://${term}`;
       }
     },

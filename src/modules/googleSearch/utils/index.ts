@@ -1,1 +1,1 @@
-export * from './checkForURL';
+export * from "./checkForURL";

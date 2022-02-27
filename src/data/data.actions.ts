@@ -1,6 +1,6 @@
-import { SetState } from 'zustand';
-import { Bookmark } from './data.types';
-import { sliceId } from 'utils';
+import { SetState } from "zustand";
+import { Bookmark } from "./data.types";
+import { sliceId } from "utils";
 
 export const updateStore = <T extends object>(): Function => {
   const update = (set: SetState<T>, updates: T): SetState<T> | void =>
@@ -8,11 +8,14 @@ export const updateStore = <T extends object>(): Function => {
   return update;
 };
 
-export const addNewBookmark = (newBookmark: string, currentBookmarks?: Bookmark[]): Bookmark[] => {
+export const addNewBookmark = (
+  newBookmark: string,
+  currentBookmarks?: Bookmark[]
+): Bookmark[] => {
   if (newBookmark) {
     const newEntry = {
       id: sliceId(),
-      url: newBookmark
+      url: newBookmark,
     };
     if (currentBookmarks) return [newEntry, ...currentBookmarks];
     else return [newEntry];
@@ -20,9 +23,14 @@ export const addNewBookmark = (newBookmark: string, currentBookmarks?: Bookmark[
   return currentBookmarks || [];
 };
 
-export const removeABookmark = (bookmarkId: string, currentBookmarks?: Bookmark[]): Bookmark[] => {
+export const removeABookmark = (
+  bookmarkId: string,
+  currentBookmarks?: Bookmark[]
+): Bookmark[] => {
   if (currentBookmarks?.length) {
-    const updatedBookmarksList = currentBookmarks.filter(({ id }) => id !== bookmarkId);
+    const updatedBookmarksList = currentBookmarks.filter(
+      ({ id }) => id !== bookmarkId
+    );
     return updatedBookmarksList;
   }
   return [];

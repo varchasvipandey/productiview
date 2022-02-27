@@ -1,7 +1,7 @@
-import { useState, useCallback, useEffect } from 'react';
-import { Container } from './timerController.style';
-import { ToolButton } from 'components';
-import { TimerType } from '../../types';
+import { useState, useCallback, useEffect } from "react";
+import { Container } from "./timerController.style";
+import { ToolButton } from "components";
+import { TimerType } from "../../types";
 
 interface TimerControllerProps {
   isRunning: boolean;
@@ -20,9 +20,9 @@ const TimerController = ({
   triggerTimer,
   pauseTimer,
   resumeTimer,
-  stopTimer
+  stopTimer,
 }: TimerControllerProps) => {
-  const [timerType, setTimerType] = useState<TimerType>('work');
+  const [timerType, setTimerType] = useState<TimerType>("work");
 
   const handlePlayPause = useCallback(() => {
     if (!isRunning) {
@@ -32,37 +32,50 @@ const TimerController = ({
   }, [isRunning, timerType]);
 
   const handleSwitchTimer = useCallback(() => {
-    if (timerType === 'work') stopTimer('break');
-    else if (timerType === 'break') stopTimer('work');
-    setTimerType((prev) => (prev === 'work' ? 'break' : 'work'));
+    if (timerType === "work") stopTimer("break");
+    else if (timerType === "break") stopTimer("work");
+    setTimerType((prev) => (prev === "work" ? "break" : "work"));
   }, [timerType]);
 
   // update controller timer type after every completion of a countdown
   useEffect(() => {
-    if (finishedCount) setTimerType((prev) => (prev === 'work' ? 'break' : 'work'));
+    if (finishedCount)
+      setTimerType((prev) => (prev === "work" ? "break" : "work"));
   }, [finishedCount]);
 
   return (
     <Container>
       <div className="actions-set">
-        <div className="action" title={isRunning ? 'Pause timer' : 'Start timer'}>
+        <div
+          className="action"
+          title={isRunning ? "Pause timer" : "Start timer"}
+        >
           <ToolButton
-            iconName={isRunning ? 'pause' : 'play'}
+            iconName={isRunning ? "pause" : "play"}
             onClick={handlePlayPause}
-            ariaLabel={isRunning ? 'Pause timer' : 'Start timer'}
+            ariaLabel={isRunning ? "Pause timer" : "Start timer"}
           />
         </div>
         <div className="action" title="Stop timer and reset">
-          <ToolButton iconName="stop" onClick={stopTimer} ariaLabel="Stop timer and reset" />
+          <ToolButton
+            iconName="stop"
+            onClick={stopTimer}
+            ariaLabel="Stop timer and reset"
+          />
         </div>
       </div>
 
       <div className="actions-set">
-        <div className="action" title={timerType === 'work' ? 'Switch to break' : 'Switch to work'}>
+        <div
+          className="action"
+          title={timerType === "work" ? "Switch to break" : "Switch to work"}
+        >
           <ToolButton
-            iconName={timerType === 'work' ? 'workOff' : 'workOn'}
+            iconName={timerType === "work" ? "workOff" : "workOn"}
             onClick={handleSwitchTimer}
-            ariaLabel={timerType === 'work' ? 'Switch to break' : 'Switch to work'}
+            ariaLabel={
+              timerType === "work" ? "Switch to break" : "Switch to work"
+            }
           />
         </div>
       </div>

@@ -5,10 +5,17 @@ export interface Bookmark {
 export interface DataStateProps {
   username?: string;
   onboarded?: boolean;
-  theme?: 'dark' | 'default';
+  theme?: "dark" | "default";
   backgroundImages?: string;
   currentBackgroundImage?: string;
   bookmarks?: Bookmark[];
+  widgetsVisibility?: {
+    bookmarks?: boolean;
+    audioPlayer?: boolean;
+    clock?: boolean;
+    googleSearch?: boolean;
+    pomodoro?: boolean;
+  };
 }
 
 export interface DataStoreProps extends DataStateProps {

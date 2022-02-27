@@ -1,14 +1,21 @@
-import create from 'zustand';
-import { persist } from 'zustand/middleware';
-import { DataStateProps, DataStoreProps } from './data.types';
-import { updateStore, addNewBookmark, removeABookmark } from './data.actions';
+import create from "zustand";
+import { persist } from "zustand/middleware";
+import { DataStateProps, DataStoreProps } from "./data.types";
+import { updateStore, addNewBookmark, removeABookmark } from "./data.actions";
 
 export const state: DataStateProps = {
-  username: '',
+  username: "",
   onboarded: false,
-  theme: 'dark',
-  backgroundImages: '',
-  bookmarks: []
+  theme: "dark",
+  backgroundImages: "",
+  bookmarks: [],
+  widgetsVisibility: {
+    bookmarks: true,
+    audioPlayer: true,
+    clock: true,
+    googleSearch: true,
+    pomodoro: true,
+  },
 };
 
 export type StateType = keyof typeof state;
@@ -17,16 +24,23 @@ export const useData = create<DataStoreProps>(
   persist(
     (set) => ({
       ...state,
-      updateDataStore: (updates: DataStateProps) => updateStore<DataStoreProps>()(set, updates),
+      updateDataStore: (updates: DataStateProps) =>
+        updateStore<DataStoreProps>()(set, updates),
       toggleTheme: () =>
-        set((state) => ({ theme: state.theme === 'default' ? 'dark' : 'default' })),
+        set((state) => ({
+          theme: state.theme === "default" ? "dark" : "default",
+        })),
       addBookmark: (newBookmark: string) =>
-        set((state) => ({ bookmarks: addNewBookmark(newBookmark, state.bookmarks) })),
+        set((state) => ({
+          bookmarks: addNewBookmark(newBookmark, state.bookmarks),
+        })),
       removeBookmark: (bookmarkId: string) =>
-        set((state) => ({ bookmarks: removeABookmark(bookmarkId, state.bookmarks) }))
+        set((state) => ({
+          bookmarks: removeABookmark(bookmarkId, state.bookmarks),
+        })),
     }),
     {
-      name: 'pdv-data'
+      name: "pdv-data",
     }
   )
 );

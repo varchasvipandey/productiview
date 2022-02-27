@@ -1,9 +1,9 @@
-import { Container } from './audioController.style';
-import { getIcon } from 'icons';
-import { ToolButton } from 'components';
-import { memo } from 'react';
+import { Container } from "./audioController.style";
+import { getIcon } from "icons";
+import { ToolButton } from "components";
+import { memo } from "react";
 
-const DiscIcon = getIcon('disc');
+const DiscIcon = getIcon("disc");
 
 interface AudioControllerProps {
   handlePlayPause: () => void;
@@ -16,7 +16,7 @@ const AudioController = ({
   handlePlayPause,
   handleNext,
   handlePrev,
-  isPlaying
+  isPlaying,
 }: AudioControllerProps) => {
   return (
     <Container className="flex-spread-row" isPlaying={isPlaying}>
@@ -26,17 +26,28 @@ const AudioController = ({
 
       <div className="actions-set">
         <div className="action" title="Previous audio">
-          <ToolButton iconName="backward" onClick={handlePrev} ariaLabel="Previous audio" />
-        </div>
-        <div className="action" title={isPlaying ? 'Pause audio' : 'Play audio'}>
           <ToolButton
-            iconName={isPlaying ? 'pause' : 'play'}
+            iconName="backward"
+            onClick={handlePrev}
+            ariaLabel="Previous audio"
+          />
+        </div>
+        <div
+          className="action"
+          title={isPlaying ? "Pause audio" : "Play audio"}
+        >
+          <ToolButton
+            iconName={isPlaying ? "pause" : "play"}
             onClick={handlePlayPause}
-            ariaLabel={isPlaying ? 'Pause audio' : 'Play audio'}
+            ariaLabel={isPlaying ? "Pause audio" : "Play audio"}
           />
         </div>
         <div className="action" title="Next audio">
-          <ToolButton iconName="forward" onClick={handleNext} ariaLabel="Next audio" />
+          <ToolButton
+            iconName="forward"
+            onClick={handleNext}
+            ariaLabel="Next audio"
+          />
         </div>
       </div>
     </Container>

@@ -1,23 +1,26 @@
-import { useState, useEffect } from 'react';
-import { getIcon } from 'icons';
-import { ToggleOnContainer, MenuContainer } from './settings.style';
-import { Menu } from './components';
-import { AbsoluteBackground } from 'components';
+import { useState, useEffect } from "react";
+import { getIcon } from "icons";
+import { ToggleOnContainer, MenuContainer } from "./settings.style";
+import { Menu } from "./components";
+import { AbsoluteBackground } from "components";
 
-const SettingsIcon = getIcon('settings');
-const CloseIcon = getIcon('close');
+const SettingsIcon = getIcon("settings");
+const CloseIcon = getIcon("close");
 
 const Settings = () => {
   const [menuOn, setMenuOn] = useState(false);
 
   const handleToggleMenu = () => setMenuOn((prev) => !prev);
 
-  const handleExitMenuFromKeyboard = (e: KeyboardEvent) => e.key === 'Escape' && setMenuOn(false);
+  const handleExitMenuFromKeyboard = (e: KeyboardEvent) =>
+    e.key === "Escape" && setMenuOn(false);
 
   useEffect(() => {
-    if (menuOn) document.addEventListener('keydown', handleExitMenuFromKeyboard);
-    else document.removeEventListener('keydown', handleExitMenuFromKeyboard);
-    return () => document.removeEventListener('keydown', handleExitMenuFromKeyboard);
+    if (menuOn)
+      document.addEventListener("keydown", handleExitMenuFromKeyboard);
+    else document.removeEventListener("keydown", handleExitMenuFromKeyboard);
+    return () =>
+      document.removeEventListener("keydown", handleExitMenuFromKeyboard);
   }, [menuOn]);
 
   return (
@@ -45,7 +48,11 @@ const Settings = () => {
       )}
 
       <ToggleOnContainer title="Settings">
-        <button className="settings" aria-label="settings" onClick={handleToggleMenu}>
+        <button
+          className="settings"
+          aria-label="settings"
+          onClick={handleToggleMenu}
+        >
           <SettingsIcon className="settings__icon" />
         </button>
       </ToggleOnContainer>

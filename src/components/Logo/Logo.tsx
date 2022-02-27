@@ -1,5 +1,5 @@
-import { memo } from 'react';
-import styled, { css, CSSObject } from 'styled-components';
+import { memo } from "react";
+import styled, { css, CSSObject } from "styled-components";
 
 const LogoContainer = styled.div(
   ({ sx }: { sx: CSSObject }) => css`

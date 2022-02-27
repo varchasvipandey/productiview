@@ -1,6 +1,6 @@
-import { TimeType } from 'types';
+import { TimeType } from "types";
 
-export type TimerType = 'work' | 'break';
+export type TimerType = "work" | "break";
 
 export interface PomodoroState {
   timeLimit: number;

@@ -1,4 +1,4 @@
-import { Container, Item } from './about.style';
+import { Container, Item } from "./about.style";
 
 const About = () => {
   return (
@@ -23,7 +23,7 @@ const About = () => {
         </div>
       </Item>
       <Item>
-        <p className="item-heading">Developed by</p>
+        <p className="item-heading">Developer</p>
         <div className="item-body">
           <a
             href="https://linkedin.com/in/varchasvipandey"

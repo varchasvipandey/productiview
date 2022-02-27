@@ -1,2 +1,2 @@
-export { default as Clock } from './Clock';
-export * from './utils';
+export { default as Clock } from "./Clock";
+export * from "./utils";

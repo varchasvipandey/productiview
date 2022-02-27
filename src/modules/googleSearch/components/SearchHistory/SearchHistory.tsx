@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
-import { useCache } from 'cache';
-import { Container } from './searchHistory.style';
+import React, { useRef, useState, useEffect, useCallback } from "react";
+import { useCache } from "cache";
+import { Container } from "./searchHistory.style";
 
 interface SearchHistoryProps {
   searchTerm: string;
@@ -13,11 +13,11 @@ const SearchHistory = ({
   searchTerm,
   setSearchTerm,
   handleToggleShowHistory,
-  handleSearch
+  handleSearch,
 }: SearchHistoryProps) => {
   const historyDiv = useRef<HTMLDivElement | null>(null);
   const [expanded, setExpanded] = useState(true);
-  const [focusedTerm, setFocusedTerm] = useState('');
+  const [focusedTerm, setFocusedTerm] = useState("");
 
   const searches = useCache((state) => state.searches);
 
@@ -42,7 +42,7 @@ const SearchHistory = ({
     // const elem = historyDiv.current;
     // if (!elem || !e) return
     // console.log(e.key);
-    if (e.key === 'Enter' && focusedTerm) {
+    if (e.key === "Enter" && focusedTerm) {
       // console.log('Search');
       handleSearch(focusedTerm);
     }
@@ -50,13 +50,13 @@ const SearchHistory = ({
 
   useEffect(() => {
     const addListeners = () => {
-      document.addEventListener('click', handleOutSideClick);
-      document.addEventListener('keypress', handleFocusedChild);
+      document.addEventListener("click", handleOutSideClick);
+      document.addEventListener("keypress", handleFocusedChild);
     };
 
     const removeListeners = () => {
-      document.removeEventListener('click', handleOutSideClick);
-      document.removeEventListener('keypress', handleFocusedChild);
+      document.removeEventListener("click", handleOutSideClick);
+      document.removeEventListener("keypress", handleFocusedChild);
     };
 
     if (expanded) addListeners();
@@ -79,7 +79,9 @@ const SearchHistory = ({
             >
               <div className="search-item__info">
                 <div className="search-item__info__time"></div>
-                <p className="search-item__info__term">{searchItem.searchTerm}</p>
+                <p className="search-item__info__term">
+                  {searchItem.searchTerm}
+                </p>
               </div>
               <div className="search-item__cta-delete"></div>
             </div>

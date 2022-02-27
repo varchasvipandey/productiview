@@ -1,5 +1,5 @@
-import { Container } from './audioInfo.style';
-import { OnlineMusicType } from '../../types';
+import { Container } from "./audioInfo.style";
+import { OnlineMusicType } from "../../types";
 
 const AudioInfo = ({ name, artist }: OnlineMusicType) => {
   return (

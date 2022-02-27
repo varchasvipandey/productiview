@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const Container = styled.div(
   () => css`
@@ -46,10 +46,10 @@ export const ModuleContentWrapper = styled.div(
 export const Modules = {
   Container: ModulesContainer,
   Section: ModuleSection,
-  Wrapper: ModuleContentWrapper
+  Wrapper: ModuleContentWrapper,
 };
 
 export const TopBar = {
   Container: TopBarContainer,
-  Section: TopBarSection
+  Section: TopBarSection,
 };

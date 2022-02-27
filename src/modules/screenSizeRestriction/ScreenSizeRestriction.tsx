@@ -1,4 +1,4 @@
-import { Container } from './screenSizeRestriction.style';
+import { Container } from "./screenSizeRestriction.style";
 
 const ScreenSizeRestriction = () => {
   return (

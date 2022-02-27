@@ -1,10 +1,10 @@
-import create from 'zustand';
-import { persist } from 'zustand/middleware';
-import { CacheStateProps, CacheStoreProps } from './cache.type';
-import { addNewSearchTerm } from './cache.actions';
+import create from "zustand";
+import { persist } from "zustand/middleware";
+import { CacheStateProps, CacheStoreProps } from "./cache.type";
+import { addNewSearchTerm } from "./cache.actions";
 
 export const state: CacheStateProps = {
-  searches: []
+  searches: [],
 };
 
 export const useCache = create<CacheStoreProps>(
@@ -12,11 +12,13 @@ export const useCache = create<CacheStoreProps>(
     (set) => ({
       ...state,
       addSearchTerm: (searchTerm: string) =>
-        set((state) => ({ searches: addNewSearchTerm(searchTerm, state.searches) })),
-      clearSearches: () => set({ searches: [] })
+        set((state) => ({
+          searches: addNewSearchTerm(searchTerm, state.searches),
+        })),
+      clearSearches: () => set({ searches: [] }),
     }),
     {
-      name: 'pdv-cache'
+      name: "pdv-cache",
     }
   )
 );
