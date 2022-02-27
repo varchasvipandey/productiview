@@ -36,7 +36,8 @@ const BookmarkListItem = ({ bookmark }: BookmarkListItemProps) => {
         <button
           aria-label={`remove ${url}`}
           className="flex-center-col"
-          onClick={handleRemoveBookmark}>
+          onClick={handleRemoveBookmark}
+        >
           <DeleteIcon />
         </button>
       </div>

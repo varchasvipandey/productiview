@@ -5,10 +5,7 @@ import shallow from 'zustand/shallow';
 
 const NewBookmarkField = () => {
   const inputValue = useRef<HTMLInputElement | null>(null);
-  const [addBookmark, bookmarks] = useData(
-    (state) => [state.addBookmark, state.bookmarks],
-    shallow
-  );
+  const [addBookmark] = useData((state) => [state.addBookmark], shallow);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

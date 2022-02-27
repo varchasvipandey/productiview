@@ -20,7 +20,7 @@ const GoogleSearch = () => {
       // addSearchTerm(term);
 
       // Check if the search term is a URL
-      let isTermUrl = isURL(term);
+      const isTermUrl = isURL(term);
 
       if (!isTermUrl) window.location.href = `https://www.google.com/search?q=${term}`;
       else {

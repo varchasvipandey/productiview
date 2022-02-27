@@ -31,7 +31,8 @@ const Menu = () => {
             <CollapsibleItem
               title="Theme"
               description={`Selected: ${selectedTheme} theme`}
-              Icon={<ThemeIcon />}>
+              Icon={<ThemeIcon />}
+            >
               <div className="theme-options">
                 {themeOptions.map((option, i) => (
                   <ColorOption key={i} {...option} />
@@ -46,7 +47,8 @@ const Menu = () => {
               title="Color Accent"
               description="Coming Soon"
               Icon={<ColorIcon />}
-              disabled></CollapsibleItem>
+              disabled
+            ></CollapsibleItem>
           </div>
         </div>
       </div>
@@ -58,7 +60,8 @@ const Menu = () => {
             <CollapsibleItem
               title="Wallpaper"
               description="You can add multiple wallpapers by adding a comma separated list of urls"
-              Icon={<WallpaperIcon />}>
+              Icon={<WallpaperIcon />}
+            >
               <TextField
                 placeholder="Add image URL/s here"
                 type="url"
@@ -80,7 +83,8 @@ const Menu = () => {
             <CollapsibleItem
               title="About"
               description="Application version, source code and developer's info"
-              Icon={<AboutIcon />}>
+              Icon={<AboutIcon />}
+            >
               <About />
             </CollapsibleItem>
           </div>

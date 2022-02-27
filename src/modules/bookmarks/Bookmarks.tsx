@@ -3,7 +3,6 @@ import { BookmarkItem, BookmarkListItem, NewBookmarkField } from './components';
 import { Container } from './bookmark.style';
 import { useData } from 'data';
 import { getIcon } from 'icons';
-import { useEffectOnOutsideClick } from 'hooks/useEffectOnOutsideClick';
 
 const ArrowIcon = getIcon('downCircularArror');
 
@@ -54,7 +53,8 @@ const Bookmarks = () => {
           <div
             className="menu glass-inverted"
             ref={expandedMenu}
-            onMouseLeave={() => setExpanded(false)}>
+            onMouseLeave={() => setExpanded(false)}
+          >
             {!!bookmarks?.length && (
               <div className="menu__bookmark-list">
                 {bookmarks.map((bookmark) => (

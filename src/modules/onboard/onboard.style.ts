@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { StyledComponentProps } from 'theme';
 
 export const Container = styled.div(
   () => css`

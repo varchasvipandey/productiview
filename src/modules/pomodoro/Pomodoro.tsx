@@ -11,8 +11,8 @@ import audioFinishWork from 'assets/audio/notification-1.ogg';
 import audioStartTimer from 'assets/audio/notification-2.ogg';
 import audioFinishBreak from 'assets/audio/notification-3.ogg';
 
-const workMins = '25',
-  breakMins = '05';
+const workMins = '25';
+const breakMins = '05';
 
 const defaultTimeState: TimeType = {
   hours: '00',

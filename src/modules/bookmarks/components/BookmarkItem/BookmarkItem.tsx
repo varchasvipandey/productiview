@@ -12,7 +12,7 @@ const BookmarkItem = ({ bookmark }: BookmarkItemProps) => {
 
   return (
     <Container title={url}>
-      <a href={url} target="_blank">
+      <a href={url} target="_blank" rel="noreferrer">
         <img
           src={`https://s2.googleusercontent.com/s2/favicons?domain=${url}`}
           alt={url}

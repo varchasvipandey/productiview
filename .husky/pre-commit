@@ -1,4 +1,36 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run check-types
+echo '🌱    You are about to plant a feature'
+
+# Check Prettier standards
+npm run check-format ||
+(
+    echo '❌  Code not looking pretty  ❌
+    Prettier Check Failed. Run yarn format, add changes and try committing again.';
+    false;
+)
+echo '✅    Prettier checks passed'
+
+# Check ESLint Standards
+npm run check-lint ||
+(
+        echo '❌  Standards are not followed correctly  ❌
+        ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+        false; 
+)
+echo '✅    Lint checks passed'
+
+# Check tsconfig standards
+npm run check-types ||
+(
+    echo '❌  TypeScript checks failed  ❌
+    Make the changes required above.'
+    false;
+)
+
+# If everything passes... Now we can commit
+echo '✅    TypeScript checks passed'
+
+# Commit
+echo '✅    Committing the code'

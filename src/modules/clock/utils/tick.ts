@@ -3,10 +3,10 @@ import { TimeType } from 'types';
 export const tickASecond = (): TimeType => {
   const today = new Date();
 
-  let hours: number | string = today.getHours(),
-    minutes: number | string = today.getMinutes(),
-    seconds: number | string = today.getSeconds(),
-    meridiem: string;
+  let hours: number | string = today.getHours();
+  let minutes: number | string = today.getMinutes();
+  let seconds: number | string = today.getSeconds();
+  let meridiem: string;
 
   // set meridiem based on 24 hour clock
   if (hours >= 12) meridiem = 'PM';

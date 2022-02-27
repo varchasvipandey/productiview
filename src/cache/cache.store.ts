@@ -1,6 +1,6 @@
 import create from 'zustand';
 import { persist } from 'zustand/middleware';
-import { CacheStateProps, CacheStoreProps, SearchEntry } from './cache.type';
+import { CacheStateProps, CacheStoreProps } from './cache.type';
 import { addNewSearchTerm } from './cache.actions';
 
 export const state: CacheStateProps = {

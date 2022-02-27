@@ -32,7 +32,8 @@ const Settings = () => {
               className="top-bar__action"
               aria-label="close"
               onClick={handleToggleMenu}
-              title="Close Settings">
+              title="Close Settings"
+            >
               <CloseIcon className="top-bar__action__icon" />
             </button>
           </div>

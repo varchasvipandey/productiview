@@ -1,4 +1,3 @@
-import { SetState } from 'zustand';
 import { SearchEntry } from './cache.type';
 import { sliceId } from 'utils';
 

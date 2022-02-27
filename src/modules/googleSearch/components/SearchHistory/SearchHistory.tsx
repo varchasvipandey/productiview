@@ -75,7 +75,8 @@ const SearchHistory = ({
               className="search-item"
               key={searchItem.id}
               onFocus={() => handleSearchItemFocus(searchItem.searchTerm)}
-              onClick={handleSearchItemClick}>
+              onClick={handleSearchItemClick}
+            >
               <div className="search-item__info">
                 <div className="search-item__info__time"></div>
                 <p className="search-item__info__term">{searchItem.searchTerm}</p>

@@ -15,7 +15,9 @@ const About = () => {
           <a
             href="https://github.com/varchasvipandey/productiview/tree/production"
             className="item-body__link"
-            target="_blank">
+            target="_blank"
+            rel="noreferrer"
+          >
             https://github.com/varchasvipandey/productiview/tree/production
           </a>
         </div>
@@ -26,7 +28,9 @@ const About = () => {
           <a
             href="https://linkedin.com/in/varchasvipandey"
             className="item-body__link"
-            target="_blank">
+            target="_blank"
+            rel="noreferrer"
+          >
             Varchasvi Pandey
           </a>
         </div>
