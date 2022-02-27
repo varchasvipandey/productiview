@@ -8,7 +8,7 @@ export const state: DataStateProps = {
   onboarded: false,
   theme: 'dark',
   backgroundImages: '',
-  bookmarks: [{ id: '121', url: 'https://www.google.com' }]
+  bookmarks: []
 };
 
 export type StateType = keyof typeof state;
