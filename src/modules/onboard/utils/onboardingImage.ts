@@ -3,4 +3,4 @@ export const getOnboardingImage = (index: number): string => {
   return imageUrl;
 };
 
-export const totalOnboardingImages = 6;
+export const totalOnboardingImages = 7;

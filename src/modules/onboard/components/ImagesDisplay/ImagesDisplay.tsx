@@ -31,6 +31,10 @@ const ImagesDisplay = ({ handleProceed }: ImagesDisplayProps) => {
         imageContainer.classList.add('animateImgIn');
       }, 1000);
     }
+
+    if (currentImageIndex === totalOnboardingImages - 1) {
+      if (navigator) navigator.clipboard.writeText('https://productiview.netlify.app');
+    }
   }, [currentImageIndex]);
 
   return (
