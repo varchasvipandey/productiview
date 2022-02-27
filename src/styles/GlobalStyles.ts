@@ -123,6 +123,12 @@ export default createGlobalStyle(
       }
     }
 
+    .glass-primary-color {
+      background: #538ffbc9;
+      backdrop-filter: blur(10.5px);
+      -webkit-backdrop-filter: blur(16.5px);
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -216,6 +222,36 @@ export default createGlobalStyle(
       }
       to {
         opacity: 1;
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+
+    @keyframes cinematicFadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes cinematicFadeOut {
+      from {
+        opacity: 1;
+        transform: scale(1);
+      }
+      to {
+        opacity: 0;
+        transform: scale(0.95);
       }
     }
 

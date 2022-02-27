@@ -1,46 +1,35 @@
-import { useData } from 'data';
-import shallow from 'zustand/shallow';
+import { useState, useRef, useEffect } from 'react';
 import { Container } from './onboard.style';
-import { getIcon } from 'icons';
-import { ChangeEvent } from 'react';
-
-const Arrow = getIcon('rightCircularArror');
+import { Welcome, ImagesDisplay } from './components';
+import { useData } from 'data';
 
 const Onboard = () => {
-  const [username, updateDataStore] = useData(
-    (state) => [state.username, state.updateDataStore],
-    shallow
-  );
+  const onboardingDiv = useRef<HTMLDivElement | null>(null);
 
-  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-    let { value } = e.target;
-    value = value.trim();
-    if (value.length <= 10) {
-      updateDataStore({ username: value });
+  const updateDataStore = useData((state) => state.updateDataStore);
+
+  const [onboardingStep, setOnboardingStep] = useState(0);
+
+  const handleNextOnboardingStep = () => setOnboardingStep((prev) => prev + 1);
+
+  useEffect(() => {
+    if (onboardingStep === 2) {
+      const onboardingDivEl = onboardingDiv.current;
+      if (!onboardingDivEl) return;
+
+      onboardingDivEl.style.animation = 'fadeOut 0.5s ease-in-out forwards';
+
+      setTimeout(() => {
+        updateDataStore({ onboarded: true });
+      }, 1000);
     }
-  };
-
-  const handleSubmit = () => {
-    updateDataStore({ onboarded: true });
-  };
+  }, [onboardingStep]);
 
   return (
-    <Container className="flex-center-col" canProceed={!!username}>
-      <p className="title">Productiview</p>
+    <Container className="flex-center-col glass-primary-color" ref={onboardingDiv}>
+      {onboardingStep === 0 && <Welcome handleClick={handleNextOnboardingStep} />}
 
-      <div className="input">
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => handleInput(e)}
-          placeholder="Username"
-          aria-label="name input"
-        />
-
-        <button aria-label="submit name" onClick={handleSubmit} disabled={!username}>
-          <Arrow />
-        </button>
-      </div>
+      {onboardingStep === 1 && <ImagesDisplay handleProceed={handleNextOnboardingStep} />}
     </Container>
   );
 };
