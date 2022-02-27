@@ -1,4 +1,13 @@
-import { Clock, Onboard, Settings, Bookmarks, GoogleSearch, Pomodoro, MusicPlayer } from 'modules';
+import {
+  Clock,
+  Onboard,
+  Settings,
+  Bookmarks,
+  GoogleSearch,
+  Pomodoro,
+  MusicPlayer,
+  ScreenSizeRestriction
+} from 'modules';
 import GlobalStyles from 'styles/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'theme';
@@ -13,51 +22,56 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Container className={`${appTheme}-theme`}>
-        <AbsoluteBackground />
-        {!onboarded && <Onboard />}
 
-        {onboarded && (
-          <>
-            <TopBar.Container>
-              <TopBar.Section>
-                <Bookmarks />
-              </TopBar.Section>
-              <TopBar.Section>
-                <Settings />
-              </TopBar.Section>
-            </TopBar.Container>
+      {window.screen.availWidth < 1280 ? (
+        <ScreenSizeRestriction />
+      ) : (
+        <Container className={`${appTheme}-theme`}>
+          <AbsoluteBackground />
+          {!onboarded && <Onboard />}
 
-            <Modules.Container>
-              {/* Notes & music */}
-              <Modules.Section className="flex-spread-col">
-                <Modules.Wrapper></Modules.Wrapper>
-                <Modules.Wrapper>
-                  <MusicPlayer />
-                </Modules.Wrapper>
-              </Modules.Section>
+          {onboarded && (
+            <>
+              <TopBar.Container>
+                <TopBar.Section>
+                  <Bookmarks />
+                </TopBar.Section>
+                <TopBar.Section>
+                  <Settings />
+                </TopBar.Section>
+              </TopBar.Container>
 
-              {/* Clock, Google search & quotes */}
-              <Modules.Section>
-                <Modules.Wrapper>
-                  <Clock />
-                </Modules.Wrapper>
-                <Modules.Wrapper>
-                  <GoogleSearch />
-                </Modules.Wrapper>
-              </Modules.Section>
+              <Modules.Container>
+                {/* Notes & music */}
+                <Modules.Section className="flex-spread-col">
+                  <Modules.Wrapper></Modules.Wrapper>
+                  <Modules.Wrapper>
+                    <MusicPlayer />
+                  </Modules.Wrapper>
+                </Modules.Section>
 
-              {/* Tasks & Pomodoro */}
-              <Modules.Section className="flex-spread-col">
-                <Modules.Wrapper></Modules.Wrapper>
-                <Modules.Wrapper>
-                  <Pomodoro />
-                </Modules.Wrapper>
-              </Modules.Section>
-            </Modules.Container>
-          </>
-        )}
-      </Container>
+                {/* Clock, Google search & quotes */}
+                <Modules.Section>
+                  <Modules.Wrapper>
+                    <Clock />
+                  </Modules.Wrapper>
+                  <Modules.Wrapper>
+                    <GoogleSearch />
+                  </Modules.Wrapper>
+                </Modules.Section>
+
+                {/* Tasks & Pomodoro */}
+                <Modules.Section className="flex-spread-col">
+                  <Modules.Wrapper></Modules.Wrapper>
+                  <Modules.Wrapper>
+                    <Pomodoro />
+                  </Modules.Wrapper>
+                </Modules.Section>
+              </Modules.Container>
+            </>
+          )}
+        </Container>
+      )}
     </ThemeProvider>
   );
 };
