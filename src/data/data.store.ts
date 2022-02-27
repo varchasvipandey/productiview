@@ -6,7 +6,7 @@ import { updateStore, addNewBookmark, removeABookmark } from './data.actions';
 export const state: DataStateProps = {
   username: '',
   onboarded: false,
-  theme: 'default',
+  theme: 'dark',
   backgroundImages: '',
   bookmarks: [{ id: '121', url: 'https://www.google.com' }]
 };

@@ -58,7 +58,7 @@ const GoogleSearch = () => {
           className="glass-inverted"
           onChange={(e) => setSearchTerm(e.target.value)}
           value={searchTerm}
-          tabIndex={1}
+          tabIndex={0}
           onClick={() => setShowHistory(true)}
           autoFocus
         />
