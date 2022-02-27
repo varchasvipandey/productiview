@@ -4,17 +4,16 @@
         "es2021": true
     },
     "extends": [
-        "standard",
-        "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:prettier/recommended"
+        "google",
+        "prettier"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": "latest",
+        "ecmaVersion": 12,
         "sourceType": "module"
     },
     "plugins": [
@@ -22,6 +21,13 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "react/prop-types": "off",
+        "require-jsdoc": 0,
         "react/react-in-jsx-scope": "off"
+    },
+    "settings": {
+        "react": {
+            "version": "latest"
+        }
     }
 }

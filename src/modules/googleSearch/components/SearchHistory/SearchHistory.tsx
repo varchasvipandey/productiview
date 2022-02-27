@@ -39,11 +39,11 @@ const SearchHistory = ({
   };
 
   const handleFocusedChild = useCallback((e: KeyboardEvent) => {
-    const elem = historyDiv.current;
+    // const elem = historyDiv.current;
     // if (!elem || !e) return
-    console.log(e.key);
+    // console.log(e.key);
     if (e.key === 'Enter' && focusedTerm) {
-      console.log('Search');
+      // console.log('Search');
       handleSearch(focusedTerm);
     }
   }, []);
