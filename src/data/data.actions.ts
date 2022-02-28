@@ -10,12 +10,14 @@ export const updateStore = <T extends object>(): Function => {
 
 export const addNewBookmark = (
   newBookmark: string,
-  currentBookmarks?: Bookmark[]
+  currentBookmarks?: Bookmark[],
+  label?: string
 ): Bookmark[] => {
   if (newBookmark) {
     const newEntry = {
       id: sliceId(),
       url: newBookmark,
+      label,
     };
     if (currentBookmarks) return [newEntry, ...currentBookmarks];
     else return [newEntry];

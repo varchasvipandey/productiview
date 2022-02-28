@@ -30,7 +30,9 @@ const BookmarkListItem = ({ bookmark }: BookmarkListItemProps) => {
             loading="lazy"
           />
         </div>
-        <p className="bookmark__url">{shortenTextLength(url, 24, true)}</p>
+        <p className="bookmark__url">
+          {bookmark.label || shortenTextLength(url, 24, true)}
+        </p>
       </div>
       <div className="cta-delete" title="Remove bookmark">
         <button

@@ -11,11 +11,11 @@ const BookmarkItem = ({ bookmark }: BookmarkItemProps) => {
   if (!url.includes("http")) url = `https://${url}`;
 
   return (
-    <Container title={url}>
+    <Container title={bookmark.label ? bookmark.label + ": " + url : url}>
       <a href={url} target="_blank" rel="noreferrer">
         <img
           src={`https://s2.googleusercontent.com/s2/favicons?domain=${url}`}
-          alt={url}
+          alt={bookmark.label ? bookmark.label + ": " + url : url}
           loading="lazy"
         />
       </a>

@@ -30,9 +30,13 @@ export const useData = create<DataStoreProps>(
         set((state) => ({
           theme: state.theme === "default" ? "dark" : "default",
         })),
-      addBookmark: (newBookmark: string) =>
+      addBookmark: (newBookmark: string, bookmarkLabel?: string) =>
         set((state) => ({
-          bookmarks: addNewBookmark(newBookmark, state.bookmarks),
+          bookmarks: addNewBookmark(
+            newBookmark,
+            state.bookmarks,
+            bookmarkLabel
+          ),
         })),
       removeBookmark: (bookmarkId: string) =>
         set((state) => ({
