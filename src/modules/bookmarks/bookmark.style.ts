@@ -56,7 +56,7 @@ export const Container = styled.div(
 
     .menu {
       width: 24rem;
-      height: 20rem;
+      height: 28rem;
       position: absolute;
       margin-top: 0.6rem;
       box-shadow: var(--shadow-primary);
