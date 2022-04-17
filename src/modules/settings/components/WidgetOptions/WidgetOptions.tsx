@@ -15,14 +15,12 @@ const WidgetOptions = () => {
   const handleCheckboxChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       const { name, checked } = e.target;
-      if (name in widgetsVisibility) {
-        updateDataStore({
-          widgetsVisibility: {
-            ...widgetsVisibility,
-            [name]: checked,
-          },
-        });
-      }
+      updateDataStore({
+        widgetsVisibility: {
+          ...widgetsVisibility,
+          [name]: checked,
+        },
+      });
     },
     [widgetsVisibility]
   );
