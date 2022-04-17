@@ -157,6 +157,11 @@ export default createGlobalStyle(
       font-weight: 500;
     }
 
+    .text {
+      font-size: 1.6rem;
+      font-weight: 400;
+    }
+
     /* Spacing */
     .m {
       &t {

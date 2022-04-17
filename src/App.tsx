@@ -7,6 +7,7 @@ import {
   Pomodoro,
   MusicPlayer,
   ScreenSizeRestriction,
+  Quotes,
 } from "modules";
 import GlobalStyles from "styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
@@ -71,6 +72,9 @@ const App = () => {
                   </Modules.Wrapper>
                   <Modules.Wrapper>
                     {!!widgetsVisibility?.googleSearch && <GoogleSearch />}
+                  </Modules.Wrapper>
+                  <Modules.Wrapper>
+                    {!!widgetsVisibility?.quotes && <Quotes />}
                   </Modules.Wrapper>
                 </Modules.Section>
 

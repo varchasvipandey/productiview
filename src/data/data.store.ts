@@ -14,6 +14,7 @@ export const state: DataStateProps = {
     audioPlayer: true,
     clock: true,
     googleSearch: true,
+    quotes: false,
     pomodoro: true,
   },
 };

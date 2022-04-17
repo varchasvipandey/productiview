@@ -10,6 +10,8 @@ const WidgetOptions = () => {
     shallow
   );
 
+  console.log(widgetsVisibility);
+
   const handleCheckboxChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       const { name, checked } = e.target;
@@ -50,6 +52,12 @@ const WidgetOptions = () => {
         checked={!!widgetsVisibility?.googleSearch}
         onChange={handleCheckboxChange}
         name="googleSearch"
+      />
+      <Checkbox
+        label="Quotes"
+        checked={!!widgetsVisibility?.quotes}
+        onChange={handleCheckboxChange}
+        name="quotes"
       />
       <Checkbox
         label="Pomodoro"

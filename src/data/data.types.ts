@@ -15,6 +15,7 @@ export interface DataStateProps {
     audioPlayer?: boolean;
     clock?: boolean;
     googleSearch?: boolean;
+    quotes?: boolean;
     pomodoro?: boolean;
   };
 }
