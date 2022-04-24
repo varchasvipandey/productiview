@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { Container } from "./timerController.style";
-import { ToolButton } from "components";
+import { ToolButton, ActionSet } from "components";
 import { TimerType } from "../../types";
 
 interface TimerControllerProps {
@@ -45,29 +45,26 @@ const TimerController = ({
 
   return (
     <Container>
-      <div className="actions-set">
-        <div
-          className="action"
-          title={isRunning ? "Pause timer" : "Start timer"}
-        >
+      <ActionSet.ActionSetWrapper>
+        <ActionSet.Action title={isRunning ? "Pause timer" : "Start timer"}>
           <ToolButton
             iconName={isRunning ? "pause" : "play"}
             onClick={handlePlayPause}
             ariaLabel={isRunning ? "Pause timer" : "Start timer"}
           />
-        </div>
-        <div className="action" title="Stop timer and reset">
+        </ActionSet.Action>
+
+        <ActionSet.Action title="Stop timer and reset">
           <ToolButton
             iconName="stop"
             onClick={stopTimer}
             ariaLabel="Stop timer and reset"
           />
-        </div>
-      </div>
+        </ActionSet.Action>
+      </ActionSet.ActionSetWrapper>
 
-      <div className="actions-set">
-        <div
-          className="action"
+      <ActionSet.ActionSetWrapper>
+        <ActionSet.Action
           title={timerType === "work" ? "Switch to break" : "Switch to work"}
         >
           <ToolButton
@@ -77,8 +74,8 @@ const TimerController = ({
               timerType === "work" ? "Switch to break" : "Switch to work"
             }
           />
-        </div>
-      </div>
+        </ActionSet.Action>
+      </ActionSet.ActionSetWrapper>
     </Container>
   );
 };

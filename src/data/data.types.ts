@@ -17,6 +17,11 @@ export interface DataStateProps {
     googleSearch?: boolean;
     quotes?: boolean;
     pomodoro?: boolean;
+    notes?: boolean;
+  };
+  notes?: {
+    data?: string;
+    fontSize?: number;
   };
   currentVersion?: string;
 }

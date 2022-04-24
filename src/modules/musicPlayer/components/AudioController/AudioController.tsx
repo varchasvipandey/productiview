@@ -1,6 +1,6 @@
 import { Container } from "./audioController.style";
 import { getIcon } from "icons";
-import { ToolButton } from "components";
+import { ToolButton, ActionSet } from "components";
 import { memo } from "react";
 
 const DiscIcon = getIcon("disc");
@@ -24,32 +24,29 @@ const AudioController = ({
         <DiscIcon />
       </div>
 
-      <div className="actions-set">
-        <div className="action" title="Previous audio">
+      <ActionSet.ActionSetWrapper>
+        <ActionSet.Action title="Previous audio">
           <ToolButton
             iconName="backward"
             onClick={handlePrev}
             ariaLabel="Previous audio"
           />
-        </div>
-        <div
-          className="action"
-          title={isPlaying ? "Pause audio" : "Play audio"}
-        >
+        </ActionSet.Action>
+        <ActionSet.Action title={isPlaying ? "Pause audio" : "Play audio"}>
           <ToolButton
             iconName={isPlaying ? "pause" : "play"}
             onClick={handlePlayPause}
             ariaLabel={isPlaying ? "Pause audio" : "Play audio"}
           />
-        </div>
-        <div className="action" title="Next audio">
+        </ActionSet.Action>
+        <ActionSet.Action title="Next audio">
           <ToolButton
             iconName="forward"
             onClick={handleNext}
             ariaLabel="Next audio"
           />
-        </div>
-      </div>
+        </ActionSet.Action>
+      </ActionSet.ActionSetWrapper>
     </Container>
   );
 };

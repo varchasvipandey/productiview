@@ -16,6 +16,11 @@ export const state: DataStateProps = {
     googleSearch: true,
     quotes: false,
     pomodoro: true,
+    notes: false,
+  },
+  notes: {
+    data: "",
+    fontSize: 16,
   },
   currentVersion: "",
 };

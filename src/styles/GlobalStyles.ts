@@ -170,17 +170,18 @@ export default createGlobalStyle(
 
     /* Spacing */
     .m {
+      margin: 2rem;
       &t {
-        margin-top: 2rem;
+        margin: 2rem 0 0 0;
       }
       &r {
-        margin-right: 2rem;
+        margin: 0 2rem 0 0;
       }
       &b {
-        margin-bottom: 2rem;
+        margin: 0 0 2rem 0;
       }
       &l {
-        margin-left: 2rem;
+        margin: 0 0 0 2rem;
       }
       &y {
         margin: 2rem 0;
@@ -190,10 +191,44 @@ export default createGlobalStyle(
       }
     }
 
+    .p {
+      &t {
+        padding-top: 2rem;
+      }
+      &r {
+        padding-right: 2rem;
+      }
+      &b {
+        padding-bottom: 2rem;
+      }
+      &l {
+        padding-left: 2rem;
+      }
+      &y {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+      &x {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+
+    /* Shaping */
+    .border-radius-base {
+      border-radius: var(--border-radius-base);
+    }
+
     /* Displaying */
     .flex-center-col {
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .flex-center-row {
+      display: flex;
       align-items: center;
       justify-content: center;
     }

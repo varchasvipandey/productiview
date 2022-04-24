@@ -21,16 +21,6 @@ export const Container = styled.div(
       }
     }
 
-    .actions-set {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .action {
-      margin: 0 0.6rem;
-    }
-
     @keyframes spin {
       from {
         transform: rotate(0deg);

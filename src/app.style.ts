@@ -34,6 +34,9 @@ export const ModuleSection = styled.div(
   () => css`
     flex: 1;
     padding: 2rem;
+    &:not(:last-child) {
+      margin-right: 4rem;
+    }
   `
 );
 

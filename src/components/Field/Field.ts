@@ -18,3 +18,25 @@ export const TextField = styled.input(
     }
   `
 );
+
+export const TextArea = styled.textarea(
+  () => css`
+    border: none;
+    font-size: 1.4rem;
+    color: var(--color-fore);
+    background-color: var(--color-back);
+    padding: 0.8rem;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius-base);
+    transition: all 0.2s ease-in-out;
+    resize: none;
+    min-height: 16rem;
+    font-family: inherit;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+  `
+);

@@ -34,6 +34,12 @@ const WidgetOptions = () => {
         name="bookmarks"
       />
       <Checkbox
+        label="Notes"
+        checked={!!widgetsVisibility?.notes}
+        onChange={handleCheckboxChange}
+        name="notes"
+      />
+      <Checkbox
         label="Audio Player"
         checked={!!widgetsVisibility?.audioPlayer}
         onChange={handleCheckboxChange}

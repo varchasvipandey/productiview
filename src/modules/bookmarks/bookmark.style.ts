@@ -62,6 +62,7 @@ export const Container = styled.div(
       box-shadow: var(--shadow-primary);
       border-radius: var(--border-radius-base);
       animation: fadeIn 0.3s ease-in-out;
+      z-index: 1;
 
       display: flex;
       flex-direction: column;

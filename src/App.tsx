@@ -9,6 +9,7 @@ import {
   ScreenSizeRestriction,
   Quotes,
   UpdateInfo,
+  Notes,
 } from "modules";
 import GlobalStyles from "styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
@@ -60,7 +61,9 @@ const App = () => {
               <Modules.Container>
                 {/* Notes & music */}
                 <Modules.Section className="flex-spread-col">
-                  <Modules.Wrapper></Modules.Wrapper>
+                  <Modules.Wrapper>
+                    {!!widgetsVisibility?.notes && <Notes />}
+                  </Modules.Wrapper>
                   <Modules.Wrapper>
                     {!!widgetsVisibility?.audioPlayer && <MusicPlayer />}
                   </Modules.Wrapper>
@@ -81,6 +84,7 @@ const App = () => {
 
                 {/* Tasks & Pomodoro */}
                 <Modules.Section className="flex-spread-col">
+                  <Modules.Wrapper></Modules.Wrapper>
                   <Modules.Wrapper></Modules.Wrapper>
                   <Modules.Wrapper>
                     {!!widgetsVisibility?.pomodoro && <Pomodoro />}

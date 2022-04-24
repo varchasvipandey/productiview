@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { Container } from "./musicPlayer.style";
 import { onlineMusicList } from "./utils";
 import { AudioController, AudioInfo } from "./components";
 
@@ -72,7 +71,7 @@ const MusicPlayer = () => {
         style={{ display: "none" }}
       />
 
-      <Container className="glass-inverted flex-spread-col appear-slow">
+      <div className="border-radius-base glass-inverted flex-spread-col appear-slow">
         <AudioController
           handlePlayPause={handlePlayPause}
           handleNext={handleNext}
@@ -80,7 +79,7 @@ const MusicPlayer = () => {
           isPlaying={music.isPlaying}
         />
         <AudioInfo {...music.list[music.selectedIndex]} />
-      </Container>
+      </div>
     </>
   );
 };

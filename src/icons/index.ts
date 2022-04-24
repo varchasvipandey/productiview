@@ -19,6 +19,7 @@ import {
 } from "react-icons/md";
 import { FaPlay, FaPause, FaStop, FaForward, FaBackward } from "react-icons/fa";
 import { GiCompactDisc } from "react-icons/gi";
+import { FiMinus, FiPlus } from "react-icons/fi";
 
 const icons = {
   rightCircularArror: IoIosArrowDropright,
@@ -43,6 +44,8 @@ const icons = {
   widgets: MdOutlineWidgets,
   unchecked: MdCheckBoxOutlineBlank,
   checked: MdCheckBox,
+  minus: FiMinus,
+  plus: FiPlus,
 };
 
 export type Icons = keyof typeof icons;
