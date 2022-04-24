@@ -59,7 +59,7 @@ export const Container = styled.div(
         }
 
         &__body {
-          margin-top: 2rem;
+          margin-top: 3.2rem;
         }
       }
     }

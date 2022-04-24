@@ -162,6 +162,12 @@ export default createGlobalStyle(
       font-weight: 400;
     }
 
+    .caption {
+      font-size: 1.2rem;
+      font-weight: 400;
+      opacity: 0.8;
+    }
+
     /* Spacing */
     .m {
       &t {

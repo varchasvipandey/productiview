@@ -18,6 +18,7 @@ export interface DataStateProps {
     quotes?: boolean;
     pomodoro?: boolean;
   };
+  currentVersion?: string;
 }
 
 export interface DataStoreProps extends DataStateProps {

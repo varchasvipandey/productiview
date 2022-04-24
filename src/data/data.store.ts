@@ -17,6 +17,7 @@ export const state: DataStateProps = {
     quotes: false,
     pomodoro: true,
   },
+  currentVersion: "",
 };
 
 export type StateType = keyof typeof state;

@@ -7,3 +7,4 @@ export * from "./pomodoro";
 export * from "./musicPlayer";
 export * from "./screenSizeRestriction";
 export * from "./quotes";
+export * from "./updateInfo";

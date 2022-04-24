@@ -8,6 +8,7 @@ import {
   MusicPlayer,
   ScreenSizeRestriction,
   Quotes,
+  UpdateInfo,
 } from "modules";
 import GlobalStyles from "styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
@@ -86,6 +87,9 @@ const App = () => {
                   </Modules.Wrapper>
                 </Modules.Section>
               </Modules.Container>
+
+              {/* update info */}
+              <UpdateInfo />
             </>
           )}
         </Container>
