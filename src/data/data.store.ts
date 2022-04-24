@@ -1,7 +1,7 @@
 import create from "zustand";
 import { persist } from "zustand/middleware";
 import { DataStateProps, DataStoreProps } from "./data.types";
-import { updateStore, addNewBookmark, removeABookmark } from "./data.actions";
+import { addNewBookmark, removeABookmark } from "./data.actions";
 
 export const state: DataStateProps = {
   username: "",
@@ -25,8 +25,7 @@ export const useData = create<DataStoreProps>(
   persist(
     (set) => ({
       ...state,
-      updateDataStore: (updates: DataStateProps) =>
-        updateStore<DataStoreProps>()(set, updates),
+      updateDataStore: (updates: DataStateProps) => set(updates),
       toggleTheme: () =>
         set((state) => ({
           theme: state.theme === "default" ? "dark" : "default",

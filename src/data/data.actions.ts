@@ -1,12 +1,5 @@
-import { SetState } from "zustand";
 import { Bookmark } from "./data.types";
 import { sliceId } from "utils";
-
-export const updateStore = <T extends object>(): Function => {
-  const update = (set: SetState<T>, updates: T): SetState<T> | void =>
-    set((state: T) => ({ ...state, ...updates }));
-  return update;
-};
 
 export const addNewBookmark = (
   newBookmark: string,
