@@ -23,5 +23,5 @@ export const metaData: MetaData = {
     },
   ],
   updateNotes:
-    "Quote widget available under the 'Widget Options' in the settings menus.",
+    "Quote widget available under the 'Widget Options' in the settings menu.",
 };
