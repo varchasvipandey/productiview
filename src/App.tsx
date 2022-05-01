@@ -10,6 +10,7 @@ import {
   Quotes,
   UpdateInfo,
   Notes,
+  Todo,
 } from "modules";
 import GlobalStyles from "styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
@@ -84,7 +85,9 @@ const App = () => {
 
                 {/* Tasks & Pomodoro */}
                 <Modules.Section className="flex-spread-col">
-                  <Modules.Wrapper></Modules.Wrapper>
+                  <Modules.Wrapper>
+                    <Todo />
+                  </Modules.Wrapper>
                   <Modules.Wrapper></Modules.Wrapper>
                   <Modules.Wrapper>
                     {!!widgetsVisibility?.pomodoro && <Pomodoro />}

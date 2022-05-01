@@ -39,27 +39,6 @@ export const Container = styled.div(
 
         &__action {
           margin-left: 1.2rem;
-
-          button {
-            border: none;
-            background: none;
-
-            &:hover {
-              cursor: pointer;
-            }
-
-            svg {
-              font-size: 3.2rem;
-              transition: all 0.2s ease-in-out;
-              margin-bottom: -4px;
-              transform: rotate(180deg);
-
-              ${isExpanded &&
-              css`
-                transform: rotate(0deg);
-              `}
-            }
-          }
         }
       }
     }

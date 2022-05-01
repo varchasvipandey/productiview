@@ -31,7 +31,7 @@ export const TextArea = styled.textarea(
     border-radius: var(--border-radius-base);
     transition: all 0.2s ease-in-out;
     resize: none;
-    min-height: 16rem;
+    height: 16rem;
     font-family: inherit;
 
     &:focus {

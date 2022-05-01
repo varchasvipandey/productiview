@@ -6,3 +6,4 @@ export { default as Logo } from "./Logo/Logo";
 export * from "./Checkbox";
 export { default as Modal } from "./Modal/Modal";
 export * from "./ActionsSet/ActionsSet";
+export { default as ExpandToolButton } from "./ExpandToolButton/ExpandToolButton";

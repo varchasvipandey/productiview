@@ -2,10 +2,18 @@ import shallow from "zustand/shallow";
 
 import { Container } from "./notesController.style";
 
-import { ToolButton, ActionSet } from "components";
+import { ToolButton, ActionSet, ExpandToolButton } from "components";
 import { useData } from "data";
 
-const NotesController = () => {
+interface NotesControllerProps {
+  handleExpandToggle: () => void;
+  isExpanded: boolean;
+}
+
+const NotesController = ({
+  handleExpandToggle,
+  isExpanded,
+}: NotesControllerProps) => {
   const [notes, updateDataStore] = useData(
     (state) => [state.notes, state.updateDataStore],
     shallow
@@ -38,6 +46,16 @@ const NotesController = () => {
               iconName="plus"
               onClick={() => handleFontSizeChange("+")}
               ariaLabel="Increase font size"
+            />
+          </ActionSet.Action>
+          <ActionSet.Action
+            title={isExpanded ? "Minimize notes" : "Maximize notes"}
+          >
+            <ExpandToolButton
+              iconName="arrowUp"
+              onClick={handleExpandToggle}
+              ariaLabel="Increase font size"
+              expanded={isExpanded}
             />
           </ActionSet.Action>
         </ActionSet.ActionSetWrapper>

@@ -1,10 +1,11 @@
 import { memo, useState } from "react";
+
 import { TimeType } from "types";
+import { ExpandToolButton } from "components";
+
 import { Container } from "./countdownDisplay.style";
 import { TimerType } from "../../types";
-import { getIcon } from "icons";
 
-const ArrowIcon = getIcon("arrowDown");
 interface CountdownDisplayProps {
   time: TimeType;
   timerType: TimerType;
@@ -31,12 +32,11 @@ const CountdownDisplay = ({ time, timerType }: CountdownDisplayProps) => {
             className="top-bar__cta__action"
             title={isExpanded ? "Minimize" : "Maximize"}
           >
-            <button
-              aria-label={isExpanded ? "Minimize" : "Maximize"}
+            <ExpandToolButton
               onClick={handleToggleExpand}
-            >
-              <ArrowIcon />
-            </button>
+              ariaLabel={isExpanded ? "Minimize" : "Maximize"}
+              expanded={isExpanded}
+            />
           </div>
         </div>
       </div>

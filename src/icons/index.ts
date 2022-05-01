@@ -16,6 +16,7 @@ import {
   MdOutlineWidgets,
   MdCheckBoxOutlineBlank,
   MdCheckBox,
+  MdKeyboardArrowUp,
 } from "react-icons/md";
 import { FaPlay, FaPause, FaStop, FaForward, FaBackward } from "react-icons/fa";
 import { GiCompactDisc } from "react-icons/gi";
@@ -46,6 +47,7 @@ const icons = {
   checked: MdCheckBox,
   minus: FiMinus,
   plus: FiPlus,
+  arrowUp: MdKeyboardArrowUp,
 };
 
 export type Icons = keyof typeof icons;
