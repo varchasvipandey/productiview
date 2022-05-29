@@ -252,6 +252,13 @@ export default createGlobalStyle(
       align-items: center;
     }
 
+    .flex-left-top-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
     .row {
       display: flex;
       flex-wrap: wrap;

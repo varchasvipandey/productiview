@@ -1,7 +1,5 @@
 import shallow from "zustand/shallow";
 
-import { Container } from "./notesController.style";
-
 import { ToolButton, ActionSet, ExpandToolButton } from "components";
 import { useData } from "data";
 
@@ -29,7 +27,7 @@ const NotesController = ({
   };
 
   return (
-    <Container className="py px flex-spread-row">
+    <div className="py px flex-spread-row">
       <p className="text">Notes</p>
 
       <div className="controls">
@@ -60,7 +58,7 @@ const NotesController = ({
           </ActionSet.Action>
         </ActionSet.ActionSetWrapper>
       </div>
-    </Container>
+    </div>
   );
 };
 

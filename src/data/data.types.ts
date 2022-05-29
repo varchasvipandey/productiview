@@ -1,3 +1,5 @@
+import { TodoTask } from "modules/todo";
+
 export interface Bookmark {
   id: string;
   url: string;
@@ -24,6 +26,7 @@ export interface DataStateProps {
     fontSize?: number;
   };
   currentVersion?: string;
+  todoTasksList?: TodoTask[];
 }
 
 export interface DataStoreProps extends DataStateProps {

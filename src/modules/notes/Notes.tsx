@@ -3,7 +3,7 @@ import { useState, useCallback } from "react";
 import { NotesController, NotesTextArea } from "./components";
 
 const Notes = () => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleExpandToggle = useCallback(
     () => setIsExpanded((prev) => !prev),

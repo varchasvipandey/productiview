@@ -21,7 +21,7 @@ const Checkbox = (props: CheckboxProps) => {
         <div className="checkbox-icon">
           <CheckIcon />
         </div>
-        <p className="label-text">{label}</p>
+        {label && <p className="label-text">{label}</p>}
       </label>
     </Container>
   );

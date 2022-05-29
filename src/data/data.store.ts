@@ -23,6 +23,7 @@ export const state: DataStateProps = {
     fontSize: 16,
   },
   currentVersion: "",
+  todoTasksList: [],
 };
 
 export type StateType = keyof typeof state;

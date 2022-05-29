@@ -25,7 +25,7 @@ const NotesTextArea = ({ isExpanded }: NotesTextAreaProps) => {
   };
 
   return (
-    <div>
+    <div style={isExpanded ? styles.expanded : styles.collapsed}>
       <TextArea
         value={notes?.data || ""}
         onChange={handleTextAreaValueChange}
