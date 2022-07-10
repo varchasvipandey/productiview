@@ -1,13 +1,14 @@
 import { Checkbox } from "components";
+import { TodoTask } from "data";
 
 import { Container } from "./taskItem.style";
-import { TodoTask } from "../../../../types";
 
 interface TaskItemProps {
   task: TodoTask;
+  handleToggleTaskStatus: (task: TodoTask) => void;
 }
 
-const TaskItem = ({ task }: TaskItemProps) => {
+const TaskItem = ({ task, handleToggleTaskStatus }: TaskItemProps) => {
   return (
     <Container className="px flex-left-top-row" completed={task.isCompleted}>
       <div
@@ -25,6 +26,7 @@ const TaskItem = ({ task }: TaskItemProps) => {
             marginRight: "4px",
           }}
           checked={task.isCompleted}
+          onChange={() => handleToggleTaskStatus(task)}
         />
       </div>
       <p

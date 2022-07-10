@@ -38,13 +38,19 @@ export default createGlobalStyle(
 
     :root {
       --color-primary: #538ffb;
+      --color-primary-light: #538ffb80;
+      --color-primary-lighter: #538ffb40;
       --color-primary-dark: #5b54fa;
       --color-primary-gradient: linear-gradient(
         to right,
         var(--color-primary),
         var(--color-primary-dark)
       );
-
+      --color-primary-gradient-light: linear-gradient(
+        to left,
+        var(--color-primary-lighter),
+        var(--color-primary-light)
+      );
       --color-white: #fefefe;
       --color-white-light: #fefefe99;
       --color-white-lighter: #fefefe50;
@@ -266,6 +272,14 @@ export default createGlobalStyle(
       &__item {
         flex: 1;
       }
+    }
+
+    .w-100 {
+      width: 100%;
+    }
+
+    .flex-w-100 {
+      flex: 1;
     }
 
     /* animations */

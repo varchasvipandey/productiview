@@ -1,9 +1,9 @@
 import { useState, useCallback } from "react";
 
 import { Modal } from "components";
+import { TodoTask } from "data";
 
 import { TodoController, TodoList, AddUpdateTask } from "./components";
-import { TodoTask } from "./types";
 
 const Todo = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -39,7 +39,7 @@ const Todo = () => {
         onClose={handleCloseModal}
         title={modal.title}
       >
-        <AddUpdateTask />
+        <AddUpdateTask handleCloseModal={handleCloseModal} />
       </Modal>
 
       <div className="border-radius-base glass-inverted flex-spread-col appear-slow">
@@ -51,7 +51,10 @@ const Todo = () => {
         />
 
         {/* Todos display */}
-        <TodoList isExpanded={isExpanded} />
+        <TodoList
+          isExpanded={isExpanded}
+          handleExpandToggle={handleExpandToggle}
+        />
       </div>
     </>
   );

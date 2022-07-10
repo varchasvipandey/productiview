@@ -18,8 +18,19 @@ export const Container = styled.div<ContainerProps>(
       cursor: pointer;
     }
 
+    .check {
+      margin-top: -1px;
+    }
+
     p.description {
-      text-decoration: ${completed ? "line-through" : "none"};
+      ${completed
+        ? css`
+            text-decoration: line-through;
+            opacity: 0.5;
+          `
+        : css`
+            text-decoration: none;
+          `};
     }
   `
 );

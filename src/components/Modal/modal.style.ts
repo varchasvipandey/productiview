@@ -26,13 +26,13 @@ export const Container = styled.div(
 
         width: 100%;
         max-width: 600px;
-        min-height: 24rem;
+        /* min-height: 24rem; */
 
         font-size: 2rem;
         scale: 0.98;
-        color: var(--color-white);
+        color: var(--color-fore);
 
-        background: rgba(0, 0, 0, 0.4);
+        background: var(--color-back);
         backdrop-filter: blur(10.5px);
         -webkit-backdrop-filter: blur(16.5px);
 

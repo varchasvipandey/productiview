@@ -45,6 +45,7 @@ const App = () => {
         <ScreenSizeRestriction />
       ) : (
         <Container className={`${appTheme}-theme`}>
+          <div id="themed-context"></div>
           <AbsoluteBackground />
           {!onboarded && <Onboard />}
 

@@ -1,4 +1,4 @@
-import { Bookmark } from "./data.types";
+import { Bookmark, TodoTask, TodoTaskPriority } from "./data.types";
 import { sliceId } from "utils";
 
 export const addNewBookmark = (
@@ -29,4 +29,28 @@ export const removeABookmark = (
     return updatedBookmarksList;
   }
   return [];
+};
+
+export const addTodoTask = (
+  description: string,
+  priority: TodoTaskPriority,
+  currentTasks: TodoTask[]
+) => {
+  if (!description) return currentTasks;
+  const newTask: TodoTask = {
+    id: sliceId(),
+    description,
+    priority,
+    isCompleted: false,
+    createdAt: new Date().toISOString(),
+  };
+
+  return [newTask, ...currentTasks];
+};
+
+export const updateTodoTask = (task: TodoTask, currentTasks: TodoTask[]) => {
+  const updatedTasks = currentTasks.map((t) => {
+    return t.id === task.id ? { ...t, ...task } : t;
+  });
+  return updatedTasks;
 };

@@ -1,4 +1,5 @@
 import { ActionSet, ToolButton, ExpandToolButton } from "components";
+import { useData } from "data";
 
 interface TodoControllerProps {
   handleExpandToggle: () => void;
@@ -11,6 +12,8 @@ const TodoController = ({
   isExpanded,
   handleOpenModal,
 }: TodoControllerProps) => {
+  const clearTaskList = useData((state) => state.clearTaskList);
+
   return (
     <div className="py px flex-spread-row">
       <p className="text">Tasks To-do</p>
@@ -27,7 +30,7 @@ const TodoController = ({
           <ActionSet.Action title="Clear task list">
             <ToolButton
               iconName="clear"
-              onClick={() => {}}
+              onClick={clearTaskList}
               ariaLabel="Clear task list"
             />
           </ActionSet.Action>

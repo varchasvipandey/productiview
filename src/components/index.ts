@@ -7,3 +7,5 @@ export * from "./Checkbox";
 export { default as Modal } from "./Modal/Modal";
 export * from "./ActionsSet/ActionsSet";
 export { default as ExpandToolButton } from "./ExpandToolButton/ExpandToolButton";
+export * from "./Button/Button";
+export * from "./Dropdown";

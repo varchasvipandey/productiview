@@ -5,7 +5,11 @@ import { sliceId } from "utils";
 const createWrapperAndAppendToBody = (wrapperId: string) => {
   const wrapperElement = document.createElement("div");
   wrapperElement.setAttribute("id", wrapperId);
-  document.body.appendChild(wrapperElement);
+  const themedContext = document.getElementById("themed-context");
+  if (themedContext) {
+    themedContext.appendChild(wrapperElement);
+    return wrapperElement;
+  }
   return wrapperElement;
 };
 

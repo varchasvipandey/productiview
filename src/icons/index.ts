@@ -22,6 +22,8 @@ import {
 import { FaPlay, FaPause, FaStop, FaForward, FaBackward } from "react-icons/fa";
 import { GiCompactDisc } from "react-icons/gi";
 import { FiMinus, FiPlus } from "react-icons/fi";
+import { BsChevronDoubleUp, BsChevronDoubleDown } from "react-icons/bs";
+import { TiEquals } from "react-icons/ti";
 
 const icons = {
   rightCircularArror: IoIosArrowDropright,
@@ -50,6 +52,9 @@ const icons = {
   plus: FiPlus,
   arrowUp: MdKeyboardArrowUp,
   clear: MdClearAll,
+  doubleArrowUp: BsChevronDoubleUp,
+  doubleArrowDown: BsChevronDoubleDown,
+  equal: TiEquals,
 };
 
 export type Icons = keyof typeof icons;
